@@ -17,7 +17,7 @@ const Navlink: FC<Props> = (props) => {
 
   return (
     <button
-      className="flex h-10 items-center rounded-lg border border-sky-200 py-2.5 px-5 font-medium uppercase text-gray-900  hover:border-sky-500 disabled:text-gray-400  dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      className="flex h-10 items-center rounded-lg border border-sky-200 bg-sky-500 py-2.5 px-5 font-medium uppercase text-gray-900  hover:border-sky-500 disabled:text-gray-400  dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       {...rest}
     >
       {children}
