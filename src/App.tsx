@@ -6,6 +6,7 @@ import HeroSection from "@/components/sections/home/HeroSection";
 import ProjectSection from "@/components/sections/home/ProjectSection";
 import { ThemeProvider } from "@/components/theme-provider";
 import { APP_THEME_KEY } from "@/constant";
+import "@/App.css";
 
 function App() {
   return (

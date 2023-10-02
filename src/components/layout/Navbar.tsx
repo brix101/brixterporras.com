@@ -1,16 +1,19 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import useScrollOffset from "@/hooks/useScrollOffset";
+import useGetScrollOffset from "@/hooks/useGetScrollOffset";
 import { cn } from "@/lib/utils";
 
 function Navbar() {
-  const isOffset = useScrollOffset(413);
+  const { scrollY } = useGetScrollOffset();
+  const isOffset = scrollY > 413;
 
   return (
     <header
       className={cn(
         "z-50 top-0 fixed w-full transition-all border-b",
-        isOffset ? "bg-background p-5 border-primary" : "p-3 border-transparent"
+        isOffset
+          ? "bg-background p-5 border-primary pointer-events-auto"
+          : "p-3 border-transparent pointer-events-none"
       )}
     >
       <div className={cn("container flex justify-between items-center")}>
@@ -32,10 +35,10 @@ function Navbar() {
             />
           </svg>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center pointer-events-auto">
           <Button
             className="outline outline-1 outline-primary bg-transparent uppercase"
-            variant="ghost"
+            variant="destructive"
             size="sm"
           >
             About
