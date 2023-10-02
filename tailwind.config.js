@@ -1,54 +1,76 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   theme: {
-    extend: {},
-  },
-  daisyui: {
-    themes: [
-      {
-        rosepine: {
-          "primary": "#c4a7e7",
-          "secondary": "#ebbcba",
-          "accent": "#f6c177",
-          "neutral": "#191724",
-          "base-100": "#1f1d2e",
-          "info": "#31748f",
-          "success": "#9ccfd8",
-          "warning": "#f6c177",
-          "error": "#eb6f92",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        'rosepine-moon': {
-          "primary": "#c4a7e7",
-          "secondary": "#ea9a97",
-          "accent": "#c4a7e7",
-          "neutral": "#2a273f",
-          "base-100": "#232136",
-          "info": "#3e8fb0",
-          "success": "#9ccfd8",
-          "warning": "#f6c177",
-          "error": "#eb6f92",
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-        'rosepine-dawn': {
-          "primary": "#907aa9",
-          "secondary": "#d7827e",
-          "accent": "#907aa9",
-          "neutral": "#faf4ed",
-          "base-100": "#fffaf3",
-          "info": "#286983",
-          "success": "#56949f",
-          "warning": "#ea9d34",
-          "error": "#b4637a",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
-    ],
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
   },
-  plugins: [require("daisyui")],
-};
+  plugins: [require("tailwindcss-animate")],
+}
