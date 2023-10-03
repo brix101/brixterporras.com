@@ -15,7 +15,8 @@ function Navbar({ offsetTop: offSetTop }: Props) {
   const isOffset = offSetTop > offset;
 
   const navButtons = sections.map((section) => {
-    if (!isOffset && section.title.includes("Home")) {
+    // if (!isOffset && section.title.includes("Home")) {
+    if (section.title.includes("Home")) {
       return null; // Skip rendering Home section button if isOffset is false
     }
 
@@ -53,14 +54,18 @@ function Navbar({ offsetTop: offSetTop }: Props) {
       )}
     >
       <div className={cn("container flex justify-between items-center")}>
-        <div>
+        <Button
+          variant={"ghost"}
+          size={"icon"}
+          onClick={() => setScrollLocation(sections[0])}
+        >
           <Icons.mainLogo
             className={cn(
               "h-11 w-11 transition-all",
               !isOffset ? "hidden" : "visible",
             )}
           />
-        </div>
+        </Button>
         <div className="flex gap-4 items-center pointer-events-auto">
           {navButtons}
           <ModeToggle />
