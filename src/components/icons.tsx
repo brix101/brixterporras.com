@@ -1,11 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Moon, Sun } from "lucide-react";
+import { MessageSquare, Moon, Sun } from "lucide-react";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
   moon: Moon,
   sun: Sun,
+  messageSquare: MessageSquare,
   mainLogo: ({ className, ...props }: IconProps) => (
     <svg
       viewBox="0 0 100 100"

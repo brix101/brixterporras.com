@@ -11,8 +11,8 @@ function HeroSection({ id }: SectionProps) {
       </div>
       <div className="rectangle-1" />
       <div className="rectangle-2" />
-      <div className="rectangle-transparent-1 border-muted-foreground border-opacity-5" />
-      <div className="rectangle-transparent-2 border-muted-foreground border-opacity-5" />
+      <div className="rectangle-transparent-1" />
+      <div className="rectangle-transparent-2" />
       <div className="circle-1" />
       <div className="circle-2" />
       <div className="circle-3" />

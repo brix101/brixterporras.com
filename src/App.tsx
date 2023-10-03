@@ -1,9 +1,10 @@
 import "@/App.css";
+import { FabButton } from "@/components/fab-button";
 import FooterBar from "@/components/layout/FooterBar";
 import Navbar from "@/components/layout/Navbar";
-import useSectionStore from "./hooks/useSectionStore";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import useSectionStore from "@/hooks/useSectionStore";
 import { useEffect, useRef, useState } from "react";
-import { ScrollArea } from "./components/ui/scroll-area";
 
 function App() {
   const [offsetTop, setOffsetTop] = useState(0);
@@ -51,6 +52,7 @@ function App() {
         return <View key={id} id={id} />;
       })}
       <FooterBar />
+      <FabButton />
     </ScrollArea>
   );
 }
