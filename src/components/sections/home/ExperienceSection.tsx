@@ -1,7 +1,7 @@
 import React from "react";
 
 function ExperienceSection() {
-  return <div className="h-screen bg-slate-800">ExperienceSection</div>;
+  return <section className="h-screen bg-slate-800">ExperienceSection</section>;
 }
 
 export default ExperienceSection;

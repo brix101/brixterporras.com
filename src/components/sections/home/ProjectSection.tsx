@@ -1,7 +1,7 @@
 import React from "react";
 
 function ProjectSection() {
-  return <div className="bg-slate-600 h-screen">ProjectSection</div>;
+  return <section className="bg-slate-600 h-[200vh]">ProjectSection</section>;
 }
 
 export default ProjectSection;

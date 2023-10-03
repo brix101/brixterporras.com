@@ -11,14 +11,14 @@ import "@/App.css";
 function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey={APP_THEME_KEY}>
-      <>
+      <main className="main-container">
         <Navbar />
         <HeroSection />
         <AboutSection />
         <ProjectSection />
         <ExperienceSection />
         <FooterBar />
-      </>
+      </main>
     </ThemeProvider>
   );
 }
