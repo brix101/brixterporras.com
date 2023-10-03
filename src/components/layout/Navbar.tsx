@@ -1,12 +1,47 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import useGetScrollOffset from "@/hooks/useGetScrollOffset";
 import { cn } from "@/lib/utils";
 import { Icons } from "../icons";
+import useSectionStore from "@/hooks/useSectionStore";
 
-function Navbar() {
-  const { scrollY } = useGetScrollOffset();
-  const isOffset = scrollY > 413;
+interface Props {
+  offsetTop: number;
+}
+
+function Navbar({ offsetTop: offSetTop }: Props) {
+  const { sections, setScrollLocation } = useSectionStore();
+  const windowHeight = window.innerHeight;
+  const offset = (windowHeight * 60) / 100;
+  const isOffset = offSetTop > offset;
+
+  const navButtons = sections.map((section) => {
+    if (!isOffset && section.title.includes("Home")) {
+      return null; // Skip rendering Home section button if isOffset is false
+    }
+
+    const buttonClasses = cn(
+      "outline outline-1 outline-primary uppercase",
+      "disabled:text-background disabled:bg-primary disabled:text-opacity-100",
+      isOffset ? "" : "bg-transparent hover:bg-background",
+    );
+
+    function handleClick() {
+      setScrollLocation(section);
+    }
+
+    return (
+      <Button
+        key={section.id}
+        className={buttonClasses}
+        variant="ghost"
+        size="sm"
+        disabled={section.isActive}
+        onClick={handleClick}
+      >
+        {section.title}
+      </Button>
+    );
+  });
 
   return (
     <header
@@ -14,7 +49,7 @@ function Navbar() {
         "z-50 top-0 fixed w-full transition-all border-b",
         isOffset
           ? "bg-background p-5 border-primary pointer-events-auto"
-          : "p-3 border-transparent pointer-events-none"
+          : "p-3 border-transparent pointer-events-none",
       )}
     >
       <div className={cn("container flex justify-between items-center")}>
@@ -22,32 +57,12 @@ function Navbar() {
           <Icons.mainLogo
             className={cn(
               "h-11 w-11 transition-all",
-              !isOffset ? "hidden" : ""
+              !isOffset ? "hidden" : "visible",
             )}
           />
         </div>
         <div className="flex gap-4 items-center pointer-events-auto">
-          <Button
-            className="outline outline-1 outline-primary bg-transparent uppercase"
-            variant="ghost"
-            size="sm"
-          >
-            About
-          </Button>
-          <Button
-            className="outline outline-1 outline-primary bg-transparent uppercase"
-            variant="ghost"
-            size="sm"
-          >
-            Project
-          </Button>
-          <Button
-            className="outline outline-1 outline-primary bg-transparent uppercase"
-            variant="ghost"
-            size="sm"
-          >
-            Experience
-          </Button>
+          {navButtons}
           <ModeToggle />
         </div>
       </div>

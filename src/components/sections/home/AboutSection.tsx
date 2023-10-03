@@ -1,7 +1,11 @@
-import React from "react";
+import { SectionProps } from "@/types";
 
-function AboutSection() {
-  return <section className="h-[50vh] bg-slate-700">AboutSection</section>;
+function AboutSection({ id }: SectionProps) {
+  return (
+    <section id={id} className="h-[50vh] bg-background2">
+      AboutSection
+    </section>
+  );
 }
 
 export default AboutSection;

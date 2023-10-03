@@ -1,26 +1,69 @@
+import "@/App.css";
 import FooterBar from "@/components/layout/FooterBar";
 import Navbar from "@/components/layout/Navbar";
-import AboutSection from "@/components/sections/home/AboutSection";
-import ExperienceSection from "@/components/sections/home/ExperienceSection";
-import HeroSection from "@/components/sections/home/HeroSection";
-import ProjectSection from "@/components/sections/home/ProjectSection";
-import { ThemeProvider } from "@/components/theme-provider";
-import { APP_THEME_KEY } from "@/constant";
-import "@/App.css";
+import useSectionStore from "./hooks/useSectionStore";
+import { useEffect, useRef, useState } from "react";
+import { ScrollArea } from "./components/ui/scroll-area";
 
 function App() {
+  const [offsetTop, setOffsetTop] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const { sections, scrollLocation, setActiveSection, setScrollLocation } =
+    useSectionStore();
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollTop = e.currentTarget.scrollTop;
+    setOffsetTop(scrollTop);
+    sections.forEach((section) => {
+      if (isSectionActive(`#${section.id}`)) {
+        setActiveSection(section);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (scrollLocation) {
+      const sectionElement = document.getElementById(scrollLocation.id);
+
+      if (sectionElement) {
+        const top = sectionElement.getBoundingClientRect().top + offsetTop; //- 80;
+        const newTop = top > 0 ? top : 0;
+
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollTo({
+            top: newTop,
+            // behavior: "smooth",
+          });
+        }
+      }
+      setScrollLocation(undefined);
+    }
+  }, [scrollLocation, setScrollLocation, offsetTop]);
+
   return (
-    <ThemeProvider defaultTheme="system" storageKey={APP_THEME_KEY}>
-      <main className="main-container">
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <ProjectSection />
-        <ExperienceSection />
-        <FooterBar />
-      </main>
-    </ThemeProvider>
+    <ScrollArea
+      ref={scrollContainerRef}
+      className="main-container"
+      onScroll={handleScroll}
+    >
+      <Navbar offsetTop={offsetTop} />
+      {sections.map(({ View, id }) => {
+        return <View key={id} id={id} />;
+      })}
+      <FooterBar />
+    </ScrollArea>
   );
+}
+
+function isSectionActive(sectionId: string): boolean {
+  const section = document.querySelector(sectionId);
+
+  if (section) {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= 250 && rect.bottom >= 0;
+  }
+
+  return false;
 }
 
 export default App;

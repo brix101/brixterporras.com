@@ -1,7 +1,11 @@
-import React from "react";
+import { SectionProps } from "@/types";
 
-function ProjectSection() {
-  return <section className="bg-slate-600 h-[200vh]">ProjectSection</section>;
+function ProjectSection({ id }: SectionProps) {
+  return (
+    <section id={id} className="bg-background h-[200vh]">
+      ProjectSection
+    </section>
+  );
 }
 
 export default ProjectSection;

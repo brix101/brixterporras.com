@@ -1,7 +1,7 @@
 import React from "react";
 
 function FooterBar() {
-  return <div>FooterBar</div>;
+  return <footer>FooterBar</footer>;
 }
 
 export default FooterBar;

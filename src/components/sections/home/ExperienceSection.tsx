@@ -1,7 +1,11 @@
-import React from "react";
+import { SectionProps } from "@/types";
 
-function ExperienceSection() {
-  return <section className="h-screen bg-slate-800">ExperienceSection</section>;
+function ExperienceSection({ id }: SectionProps) {
+  return (
+    <section id={id} className="h-screen bg-background2">
+      ExperienceSection
+    </section>
+  );
 }
 
 export default ExperienceSection;

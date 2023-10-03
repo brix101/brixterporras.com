@@ -5,15 +5,19 @@ body {
   behavior: smooth;
 }
 
-/* .main-container { */
-/*   scroll-snap-type: y mandatory; */
-/*   overflow-y: scroll; */
-/*   height: 100vh; */
-/* } */
+.main-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
 
-/* .main-container section { */
-/*   scroll-snap-align: start; */
-/* } */
+.main-container section {
+  scroll-snap-align: start;
+  padding-top: 80px;
+}
+.main-container footer {
+  scroll-snap-align: start;
+}
 
 .hero-section {
   color: hsl(var(--background));
@@ -82,13 +86,10 @@ body {
 }
 
 .hero-section .main-logo {
-  line-height: 0.9;
-  font-weight: bold;
   display: inline-block;
   opacity: 0;
   animation: 1s fadeInFromTop cubic-bezier(0.785, 0.135, 0.15, 0.86) 1s forwards;
   animation-delay: 0.7s;
-  cursor: pointer;
 }
 
 header {
@@ -256,7 +257,9 @@ h3 {
   transform-origin: 50% 50%;
   left: 5%;
   top: 50%;
-  animation: fadeInFromTop 0.5s linear forwards, floating ease 4s infinite;
+  animation:
+    fadeInFromTop 0.5s linear forwards,
+    floating ease 4s infinite;
 }
 
 .circle-2 {
@@ -269,7 +272,8 @@ h3 {
   display: block;
   border-radius: 50%;
   transform-origin: 50% 50%;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 4s infinite;
 }
 
@@ -282,7 +286,8 @@ h3 {
   position: absolute;
   display: block;
   border-radius: 50%;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 4s infinite;
 }
 
@@ -328,7 +333,8 @@ h3 {
 
 .triangle-1 {
   right: 0;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 6s infinite;
 }
 .triangle-1 svg {
@@ -340,7 +346,8 @@ h3 {
 .triangle-2 {
   top: 30%;
   left: 20%;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 8s infinite;
 }
 .triangle-2 svg {
@@ -352,7 +359,8 @@ h3 {
 .triangle-3 {
   top: 80%;
   left: 15%;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 10s infinite;
 }
 .triangle-3 svg {
@@ -364,7 +372,8 @@ h3 {
 .triangle-4 {
   top: 60%;
   right: 15%;
-  animation: fadeInFromTop 0.5s linear forwards,
+  animation:
+    fadeInFromTop 0.5s linear forwards,
     floating ease-in-out 5s infinite;
 }
 .triangle-4 svg {
