@@ -1,12 +1,11 @@
 import { Separator } from "@/components/ui/separator";
-import { SectionProps } from "@/types";
 
-function ExperienceSection({ id }: SectionProps) {
+function ProjectSection() {
   return (
-    <section id={id} className="bg-background2">
-      <div className="container h-screen space-y-8 ">
+    <section className="bg-background">
+      <div className="container h-[300vh] space-y-8 ">
         <div className="w-full">
-          <h2 className="text-3xl font-bold sm:text-4xl">Experience</h2>
+          <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
           <p className="mt-4 text-zinc-400">
             Some of the projects are from work and some are on my own time.
           </p>
@@ -17,4 +16,4 @@ function ExperienceSection({ id }: SectionProps) {
   );
 }
 
-export default ExperienceSection;
+export default ProjectSection;

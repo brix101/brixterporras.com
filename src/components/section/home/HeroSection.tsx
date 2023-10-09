@@ -1,10 +1,9 @@
 import GithubBtn from "@/components/GithubBtn";
 import { Icons } from "@/components/icons";
-import { SectionProps } from "@/types";
 
-function HeroSection({ id }: SectionProps) {
+function HeroSection() {
   return (
-    <section id={id} className="hero-section">
+    <section className="hero-section">
       <div className="z-10 w-full flex justify-center">
         <GithubBtn />
         <Icons.mainLogo className="main-logo h-80 w-80" />
