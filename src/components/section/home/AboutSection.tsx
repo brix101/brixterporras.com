@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 
 function AboutSection() {
   return (
-    <section className="bg-background2">
+    <section id="section-about" className="bg-background2">
       <div className="container h-screen space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">About me</h2>
