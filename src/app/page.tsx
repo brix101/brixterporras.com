@@ -1,3 +1,4 @@
+import GithubBtn from "@/components/GithubBtn";
 import Navbar from "@/components/layout/navbar";
 import AboutSection from "@/components/section/home/AboutSection";
 import ExperienceSection from "@/components/section/home/ExperienceSection";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <main className="">
       <Navbar />
+      <GithubBtn />
       <HeroSection />
       <AboutSection />
       <ProjectSection />

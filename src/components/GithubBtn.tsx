@@ -6,7 +6,7 @@ function GithubBtn() {
       target="_blank"
     >
       <svg
-        className="github-svg"
+        className="github-svg transition-all delay-75"
         width="90"
         height="90"
         viewBox="0 0 250 250"

@@ -5,7 +5,6 @@ function HeroSection() {
   return (
     <section className="hero-section">
       <div className="z-10 w-full flex justify-center">
-        <GithubBtn />
         <Icons.mainLogo className="main-logo h-80 w-80" />
       </div>
       <div className="rectangle-1" />
