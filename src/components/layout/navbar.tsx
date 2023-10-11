@@ -54,7 +54,7 @@ function Navbar() {
             className={cn("h-11 w-11", !isOffset ? "hidden" : "visible")}
           />
         </Link>
-        <div className="pointer-events-auto flex items-center gap-4">
+        <div className="pointer-events-auto flex items-center gap-2 ">
           <Link
             className={cn(
               buttonClasses,
