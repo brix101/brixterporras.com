@@ -1,25 +1,33 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function useScrollOffset(scrollThreshold = 80) {
   const [isOffset, setIsOffset] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate the scroll position as a percentage of the window height
-      const scrollPosition = (window.scrollY / window.innerHeight) * 100;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = (scrollY / windowHeight) * 100;
 
       // Check if the scroll position is greater than the threshold
-      setIsOffset(scrollPosition > scrollThreshold);
+      if (!isOffset && scrollPosition > scrollThreshold) {
+        setIsOffset(true);
+      } else if (isOffset && scrollPosition <= scrollThreshold) {
+        setIsOffset(false);
+      }
     };
 
     // Add a scroll event listener to track the scroll position
     window.addEventListener("scroll", handleScroll);
 
+    // Call handleScroll initially to set the initial state
+    handleScroll();
+
     // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [scrollThreshold]);
+  }, [scrollThreshold, isOffset]);
 
   return isOffset;
 }
