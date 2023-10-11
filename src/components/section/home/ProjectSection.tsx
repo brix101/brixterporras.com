@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 
 function ProjectSection() {
   return (
-    <section id="section-project" className="bg-background">
+    <section id="section-project" className="bg-background pt-24">
       <div className="container h-[300vh] space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
