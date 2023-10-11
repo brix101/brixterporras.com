@@ -2,7 +2,7 @@
 
 import { Icons } from "@/components/icons";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import useScrollOffset from "@/hooks/useScrollOffset";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -33,13 +33,13 @@ function Navbar() {
   return (
     <header
       className={cn(
-        "z-50 top-0 fixed w-full transition-all border-b",
+        "fixed top-0 z-50 w-full border-b transition-all",
         isOffset
-          ? "bg-background p-5 border-primary pointer-events-auto"
-          : "p-3 border-transparent pointer-events-none",
+          ? "pointer-events-auto border-primary bg-background p-3"
+          : "pointer-events-none border-transparent p-4",
       )}
     >
-      <div className={cn("container flex justify-between items-center")}>
+      <div className={cn("container flex items-center justify-between")}>
         <Link
           className={cn(
             buttonVariants({
@@ -51,13 +51,10 @@ function Navbar() {
           onClick={handleScroll}
         >
           <Icons.mainLogo
-            className={cn(
-              "h-11 w-11 transition-all",
-              !isOffset ? "hidden" : "visible",
-            )}
+            className={cn("h-11 w-11", !isOffset ? "hidden" : "visible")}
           />
         </Link>
-        <div className="flex gap-4 items-center pointer-events-auto">
+        <div className="pointer-events-auto flex items-center gap-4">
           <Link
             className={cn(
               buttonClasses,

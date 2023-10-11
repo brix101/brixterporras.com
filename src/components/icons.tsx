@@ -18,7 +18,7 @@ export const Icons = {
       <rect
         width="100"
         height="100"
-        className="fill-foreground group-hover:fill-primary"
+        className="fill-foreground transition-all delay-75 group-hover:fill-primary"
       />
       <path
         className="fill-background"
