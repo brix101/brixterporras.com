@@ -9,7 +9,7 @@ function useScrollOffset(scrollThreshold = 80) {
       const windowHeight = window.innerHeight;
       const scrollPosition = (scrollY / windowHeight) * 100;
 
-      // Check if the scroll position is greater than the threshold
+      // Check if the scroll position is greater than the threshold or 80 percent of the window
       if (!isOffset && scrollPosition > scrollThreshold) {
         setIsOffset(true);
       } else if (isOffset && scrollPosition <= scrollThreshold) {

@@ -3,6 +3,7 @@
 import { Icons } from "@/components/icons";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
+import useActiveSection from "@/hooks/useActiveSection";
 import useScrollOffset from "@/hooks/useScrollOffset";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -10,14 +11,12 @@ import * as React from "react";
 
 function Navbar() {
   const isOffset = useScrollOffset(80);
+  const activeSection = useActiveSection();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // first prevent the default behavior
     e.preventDefault();
-    // get the href and remove everything before the hash (#)
     const href = e.currentTarget.href;
     const targetId = href.replace(/.*\#/, "");
-    // get the element by id and use scrollIntoView
     const elem = document.getElementById(targetId);
     elem?.scrollIntoView({
       behavior: "smooth",
@@ -25,10 +24,13 @@ function Navbar() {
   };
 
   const buttonClasses = cn(
-    "outline outline-1 outline-primary uppercase",
+    "outline outline-1 outline-primary uppercase bg-background",
     "disabled:text-background disabled:bg-primary disabled:text-opacity-100",
-    isOffset ? "" : "bg-transparent hover:bg-background",
   );
+
+  function isActiveSection(section: string) {
+    return section === activeSection;
+  }
 
   return (
     <header
@@ -59,7 +61,7 @@ function Navbar() {
             className={cn(
               buttonClasses,
               buttonVariants({
-                variant: "ghost",
+                variant: isActiveSection("section-about") ? "default" : "ghost",
                 size: "sm",
               }),
             )}
@@ -72,7 +74,7 @@ function Navbar() {
             className={cn(
               buttonClasses,
               buttonVariants({
-                variant: "ghost",
+                variant: isActiveSection("section-project") ? "default" : "ghost",
                 size: "sm",
               }),
             )}
@@ -85,7 +87,7 @@ function Navbar() {
             className={cn(
               buttonClasses,
               buttonVariants({
-                variant: "ghost",
+                variant: isActiveSection("section-experience") ? "default" : "ghost",
                 size: "sm",
               }),
             )}

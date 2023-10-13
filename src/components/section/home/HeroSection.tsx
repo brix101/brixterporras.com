@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons";
 function HeroSection() {
   return (
     <section id="section-hero" className="hero-section">
-      <div className="z-10 w-full flex justify-center">
+      <div className="z-10 flex w-full justify-center">
         <Icons.mainLogo className="main-logo h-80 w-80" />
       </div>
       <div className="rectangle-1" />
