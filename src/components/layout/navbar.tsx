@@ -6,8 +6,30 @@ import { buttonVariants } from "@/components/ui/button";
 import useActiveSection from "@/hooks/useActiveSection";
 import useScrollOffset from "@/hooks/useScrollOffset";
 import { cn } from "@/lib/utils";
+import { INavButton } from "@/types";
 import Link from "next/link";
 import * as React from "react";
+
+
+const navButtons: Array<INavButton> = [
+  {
+    sectionId: "section-hero",
+    label: "Home",
+    isHidden: true,
+  },
+  {
+    sectionId: "section-about",
+    label: "About me",
+  },
+  {
+    sectionId: "section-project",
+    label: "Project",
+  },
+  {
+    sectionId: "section-experience",
+    label: "Experiece",
+  },
+];
 
 function Navbar() {
   const isOffset = useScrollOffset(80);
@@ -28,9 +50,29 @@ function Navbar() {
     "disabled:text-background disabled:bg-primary disabled:text-opacity-100",
   );
 
-  function isActiveSection(section: string) {
-    return section === activeSection;
-  }
+  const secNavButtons = navButtons.map((item, index) => {
+    const isActive = item.sectionId === activeSection;
+    if (item.isHidden) {
+      return;
+    }
+
+    return (
+      <Link
+        key={index}
+        className={cn(
+          buttonClasses,
+          buttonVariants({
+            variant: isActive ? "default" : "ghost",
+            size: "sm",
+          }),
+        )}
+        href={"#" + item.sectionId}
+        onClick={handleScroll}
+      >
+        {item.label}
+      </Link>
+    );
+  });
 
   return (
     <header
@@ -57,46 +99,7 @@ function Navbar() {
           />
         </Link>
         <div className="pointer-events-auto flex items-center gap-2 ">
-          <Link
-            className={cn(
-              buttonClasses,
-              buttonVariants({
-                variant: isActiveSection("section-about") ? "default" : "ghost",
-                size: "sm",
-              }),
-            )}
-            href={"#section-about"}
-            onClick={handleScroll}
-          >
-            About Me
-          </Link>
-          <Link
-            className={cn(
-              buttonClasses,
-              buttonVariants({
-                variant: isActiveSection("section-project") ? "default" : "ghost",
-                size: "sm",
-              }),
-            )}
-            href={"#section-project"}
-            onClick={handleScroll}
-          >
-            Project
-          </Link>
-          <Link
-            className={cn(
-              buttonClasses,
-              buttonVariants({
-                variant: isActiveSection("section-experience") ? "default" : "ghost",
-                size: "sm",
-              }),
-            )}
-            href={"#section-experience"}
-            onClick={handleScroll}
-          >
-            Experiece
-          </Link>
-          <ModeToggle />
+          {secNavButtons} <ModeToggle />
         </div>
       </div>
     </header>
