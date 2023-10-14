@@ -10,9 +10,9 @@ export function ModeToggle() {
 
   return (
     <Button
-      className="w-9 border-primary hover:bg-background hover:text-primary"
+      className="border-primary hover:bg-background hover:text-primary"
       variant="outline"
-      size="sm"
+      size="icon"
       onClick={() => (isDark ? setTheme("light") : setTheme("dark"))}
     >
       <Icons.sun className="absolute h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

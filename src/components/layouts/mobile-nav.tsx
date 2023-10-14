@@ -43,7 +43,7 @@ export function MobileNav({ isOffset, activeSection }: Props) {
             <SheetTrigger asChild>
               <Button
                 variant="outline"
-                size={"sm"}
+                size={"icon"}
                 className="border-primary text-base hover:bg-background  hover:text-primary focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
               >
                 <ViewVerticalIcon className="h-5 w-5" />
