@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { env } from "@/env.mjs";
+import { graphQuery } from "@/lib/graphQuery";
 
 interface PinnedData {
   id: string;
@@ -32,7 +32,7 @@ interface PinnedResponse {
   };
 }
 
-const queryPinned = `
+const query = `
 query userInfo($login: String!) {
   user(login: $login) {
     pinnedItems(first: 6, types: REPOSITORY) {
@@ -64,19 +64,10 @@ query userInfo($login: String!) {
 `;
 
 async function getPinnedProjects() {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: queryPinned,
-      variables: { login: "brix101" },
-    }),
+  const res = await graphQuery<PinnedResponse>(query, {
+    login: "brix101",
   });
 
-  const res: PinnedResponse = await response.json();
   return res.data.user.pinnedItems.nodes;
 }
 
