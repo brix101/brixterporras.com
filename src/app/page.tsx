@@ -1,5 +1,5 @@
 import GithubBtn from "@/components/GithubBtn";
-import Navbar from "@/components/layout/navbar";
+import SiteHeader from "@/components/layouts/site-header";
 import AboutSection from "@/components/section/home/AboutSection";
 import ExperienceSection from "@/components/section/home/ExperienceSection";
 import HeroSection from "@/components/section/home/HeroSection";
@@ -9,7 +9,7 @@ import "@/styles/App.css";
 export default function Home() {
   return (
     <main className="">
-      <Navbar />
+      <SiteHeader />
       <GithubBtn />
       <HeroSection />
       <AboutSection />

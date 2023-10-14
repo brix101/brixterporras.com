@@ -1,10 +1,8 @@
+import { siteConfig } from "@/config/site";
+
 function GithubBtn() {
   return (
-    <a
-      href="https://github.com/Brix101"
-      className="github-corner"
-      target="_blank"
-    >
+    <a href={siteConfig.links.github} className="github-corner" target="_blank">
       <svg
         className="github-svg transition-all delay-75"
         width="90"
