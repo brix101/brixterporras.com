@@ -1,5 +1,9 @@
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { graphQuery } from "@/lib/graphQuery";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface PinnedData {
   id: string;
@@ -13,12 +17,24 @@ interface PinnedData {
   languages: {
     edges: LanguageEdge[];
   };
+  repositoryTopics: {
+    edges: TopicEdge[];
+  };
 }
 
 interface LanguageEdge {
+  size: number;
   node: {
     color: string;
     name: string;
+  };
+}
+
+interface TopicEdge {
+  node: {
+    topic: {
+      name: string;
+    };
   };
 }
 
@@ -50,9 +66,19 @@ query userInfo($login: String!) {
           }
           languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
             edges {
+              size
               node {
                 color
                 name
+              }
+            }
+          }
+          repositoryTopics(first: 10) {
+            edges {
+              node {
+                topic {
+                  name
+                }
               }
             }
           }
@@ -80,15 +106,52 @@ async function ProjectSection() {
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
           <p className="mt-4 text-zinc-400">
-            Some of the projects are from work and some are on my own time.
+            Check out my highlighted GitHub projects below.
           </p>
         </div>
         <Separator className="bg-primary" />
-        {pinnedProjects.map(item => (
-          <div key={item.id}>
-            {item.id}==={item.name}
-          </div>
-        ))}
+        <div className="grid grid-cols-4 gap-4">
+          {pinnedProjects.map(item => (
+            <Card key={item.id}>
+              <CardHeader>
+                <CardTitle>{item.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex space-x-2">
+                  {item.homepageUrl != "" ? (
+                    <Link
+                      href={item.homepageUrl}
+                      className={cn(
+                        buttonVariants({
+                          variant: "link",
+                          size: "sm",
+                        }),
+                      )}
+                      target="_blank"
+                    >
+                      View
+                    </Link>
+                  ) : undefined}
+                  <Link
+                    href={item.url}
+                    className={cn(
+                      buttonVariants({
+                        variant: "link",
+                        size: "sm",
+                      }),
+                    )}
+                    target="_blank"
+                  >
+                    Github
+                  </Link>
+                </div>
+                {item.repositoryTopics.edges.map((topic, index) => {
+                  return <p key={index}>{topic.node.topic.name}</p>;
+                })}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );

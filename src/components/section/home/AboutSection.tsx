@@ -108,16 +108,19 @@ async function AboutSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
-        {data.slice(0, 6).map((item, index) => (
-          <div
-            key={index}
-            style={{
-              color: item.color,
-            }}
-          >
-            {item.name}
-          </div>
-        ))}
+        <div className="flex gap-2">
+          {data.slice(0, 6).map((item, index) => (
+            <div
+              key={index}
+              className="h-24 w-24 border text-center"
+              style={{
+                borderColor: item.color,
+              }}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
