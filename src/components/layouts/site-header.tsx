@@ -15,9 +15,9 @@ function SiteHeader() {
     <header className="pointer-events-none fixed top-0 z-50 w-full">
       <div
         className={cn(
-          "container pointer-events-auto flex items-center space-x-2 rounded-xl border p-4 transition-all",
+          "container pointer-events-auto flex items-center space-x-2 rounded-xl border py-4 px-8 transition-all",
           isOffset
-            ? "mt-2 border-primary bg-background/30 backdrop-blur-xl backdrop-filter"
+            ? "mt-2 border-primary bg-background/95 backdrop-blur-sm"
             : "border-transparent",
         )}
       >
