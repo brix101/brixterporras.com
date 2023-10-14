@@ -25,7 +25,7 @@ export function MainNav({ isOffset, activeSection }: Props) {
       <Link
         key={index}
         className={cn(
-          "bg-background uppercase outline outline-1 outline-primary disabled:bg-primary disabled:text-background disabled:text-opacity-100",
+          "pointer-events-auto bg-background uppercase outline outline-1 outline-primary disabled:bg-primary disabled:text-background disabled:text-opacity-100 ",
           buttonVariants({
             variant: isActive ? "default" : "ghost",
             size: "sm",

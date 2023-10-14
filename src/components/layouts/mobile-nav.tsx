@@ -21,7 +21,7 @@ export function MobileNav({ isOffset, activeSection }: Props) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex w-full items-center justify-between md:hidden">
+    <div className="pointer-events-auto flex w-full items-center justify-between md:hidden ">
       <div>
         <Link
           className={cn(
