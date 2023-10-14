@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   authors: [
     {
-      name: "Brixter Porras",
+      name: "brix101",
       url: siteConfig.links.github,
     },
   ],
-  creator: "Brixter Porras",
+  creator: "brix101",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },

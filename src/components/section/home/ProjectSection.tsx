@@ -1,6 +1,88 @@
 import { Separator } from "@/components/ui/separator";
+import { env } from "@/env.mjs";
 
-function ProjectSection() {
+interface PinnedData {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+  homepageUrl: string;
+  object: {
+    text: string;
+  };
+  languages: {
+    edges: LanguageEdge[];
+  };
+}
+
+interface LanguageEdge {
+  node: {
+    color: string;
+    name: string;
+  };
+}
+
+interface PinnedResponse {
+  data: {
+    user: {
+      pinnedItems: {
+        nodes: PinnedData[];
+      };
+    };
+  };
+}
+
+const queryPinned = `
+query userInfo($login: String!) {
+  user(login: $login) {
+    pinnedItems(first: 6, types: REPOSITORY) {
+      nodes {
+        ... on Repository {
+          id
+          name
+          url
+          description
+          homepageUrl
+          object(expression: "master:README.md") {
+            ... on Blob {
+              text
+            }
+          }
+          languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+            edges {
+              node {
+                color
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+async function getPinnedProjects() {
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: queryPinned,
+      variables: { login: "brix101" },
+    }),
+  });
+
+  const res: PinnedResponse = await response.json();
+  return res.data.user.pinnedItems.nodes;
+}
+
+async function ProjectSection() {
+  const pinnedProjects = await getPinnedProjects();
+
   return (
     <section id="section-project" className="bg-background pt-20">
       <div className="container h-[100vh] space-y-8 ">
@@ -11,6 +93,11 @@ function ProjectSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
+        {pinnedProjects.map(item => (
+          <div key={item.id}>
+            {item.id}==={item.name}
+          </div>
+        ))}
       </div>
     </section>
   );
