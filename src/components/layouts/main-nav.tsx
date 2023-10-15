@@ -44,7 +44,7 @@ export function MainNav({ isOffset, activeSection }: Props) {
       <div>
         <Link
           className={cn(
-            "flex items-center space-x-2",
+            "flex items-center space-x-2 pointer-events-auto",
             !isOffset ? "hidden" : "visible",
           )}
           href="#section-hero"

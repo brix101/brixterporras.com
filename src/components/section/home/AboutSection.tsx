@@ -100,7 +100,7 @@ async function AboutSection() {
 
   return (
     <section id="section-about" className="bg-background-2 pt-20">
-      <div className="container h-screen space-y-8 ">
+      <div className="container min-h-screen space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">About me</h2>
           <p className="mt-4 text-zinc-400">
@@ -108,7 +108,9 @@ async function AboutSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
-        <div className="flex gap-2">
+        <div className="grid md:grid-cols-2">    
+          <div></div>
+          <div className="flex flex-wrap gap-2">
           {data.slice(0, 6).map((item, index) => (
             <div
               key={index}
@@ -121,6 +123,9 @@ async function AboutSection() {
             </div>
           ))}
         </div>
+
+        </div>
+
       </div>
     </section>
   );

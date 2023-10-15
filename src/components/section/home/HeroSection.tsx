@@ -1,10 +1,11 @@
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons"
+import "@/styles/hero-style.css"
 
 function HeroSection() {
   return (
     <section id="section-hero" className="hero-section">
       <div className="z-10 flex w-full justify-center">
-        <Icons.mainLogo className="main-logo h-80 w-80" />
+        <Icons.mainLogo className="main-logo h-60 w-60 md:h-80 md:w-80" />
       </div>
       <div className="rectangle-1" />
       <div className="rectangle-2" />
@@ -26,7 +27,7 @@ function HeroSection() {
         <Icons.heroTriangle />
       </div>
     </section>
-  );
+  )
 }
 
-export default HeroSection;
+export default HeroSection

@@ -101,8 +101,8 @@ async function ProjectSection() {
   const pinnedProjects = await getPinnedProjects();
 
   return (
-    <section id="section-project" className="bg-background pt-20">
-      <div className="container h-[100vh] space-y-8 ">
+    <section id="section-project" className="bg-background pt-20 pb-10">
+      <div className="container min-h-screen space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
           <p className="mt-4 text-zinc-400">
@@ -110,7 +110,7 @@ async function ProjectSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {pinnedProjects.map(item => (
             <Card key={item.id}>
               <CardHeader>

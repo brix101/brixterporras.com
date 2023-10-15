@@ -12,7 +12,7 @@ function SiteHeader() {
   const activeSection = useActiveSection()
 
   return (
-    <header className="pointer-events-none fixed top-0 z-50 w-full">
+    <header className="hero-header pointer-events-none fixed top-0 z-50 w-full">
       <div className="md:container">
         <div
           className={cn(
