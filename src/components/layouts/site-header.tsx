@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { ModeToggle } from "@/components/mode-toggle";
-import useActiveSection from "@/hooks/useActiveSection";
-import useScrollOffset from "@/hooks/useScrollOffset";
-import { cn } from "@/lib/utils";
-import { MainNav } from "./main-nav";
-import { MobileNav } from "./mobile-nav";
+import { ModeToggle } from "@/components/mode-toggle"
+import useActiveSection from "@/hooks/useActiveSection"
+import useScrollOffset from "@/hooks/useScrollOffset"
+import { cn } from "@/lib/utils"
+import { MainNav } from "./main-nav"
+import { MobileNav } from "./mobile-nav"
 
 function SiteHeader() {
-  const isOffset = useScrollOffset(20);
-  const activeSection = useActiveSection();
+  const isOffset = useScrollOffset(20)
+  const activeSection = useActiveSection()
 
   return (
     <header className="pointer-events-none fixed top-0 z-50 w-full">
-      <div className="container">
+      <div className="md:container">
         <div
           className={cn(
-            "flex items-center space-x-2 rounded-xl border px-8 py-4 transition-all",
+            "flex items-center space-x-2 border-b p-4 md:px-8 md:py-4 transition-all md:rounded-xl md:border",
             isOffset
-              ? "mt-2 border-primary bg-background/95 backdrop-blur-sm"
+              ? "border-primary bg-background/95 backdrop-blur-sm md:mt-2"
               : "border-transparent",
           )}
         >
@@ -30,7 +30,7 @@ function SiteHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }
 
-export default SiteHeader;
+export default SiteHeader
