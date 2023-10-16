@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { ViewVerticalIcon } from "@radix-ui/react-icons";
-import Link, { LinkProps } from "next/link";
-import * as React from "react";
+import { ViewVerticalIcon } from "@radix-ui/react-icons"
+import Link, { LinkProps } from "next/link"
+import * as React from "react"
 
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { navButtons } from "@/config/docs";
-import { siteConfig } from "@/config/site";
-import { cn, handleScroll } from "@/lib/utils";
+import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { navButtons } from "@/config/docs"
+import { siteConfig } from "@/config/site"
+import { cn, handleScroll } from "@/lib/utils"
 
 interface Props {
-  isOffset?: boolean;
-  activeSection: string | null;
+  isOffset?: boolean
+  activeSection: string | null
 }
 
 export function MobileNav({ isOffset, activeSection }: Props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   return (
     <div className="pointer-events-auto flex w-full items-center justify-between md:hidden ">
@@ -82,14 +82,14 @@ export function MobileNav({ isOffset, activeSection }: Props) {
         }
       </div>
     </div>
-  );
+  )
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void;
-  children: React.ReactNode;
-  className?: string;
-  activeSection?: string | null;
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
+  activeSection?: string | null
 }
 
 function MobileLink({
@@ -100,18 +100,18 @@ function MobileLink({
   activeSection,
   ...props
 }: MobileLinkProps) {
-  const isActive = href === "#" + activeSection;
+  const isActive = href === "#" + activeSection
   return (
     <Link
       href={href}
       onClick={e => {
-        handleScroll(e);
-        onOpenChange?.(false);
+        handleScroll(e)
+        onOpenChange?.(false)
       }}
       className={cn(className, isActive && "text-primary")}
       {...props}
     >
       {children}
     </Link>
-  );
+  )
 }

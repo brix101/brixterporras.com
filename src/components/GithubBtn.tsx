@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site"
 
 function GithubBtn() {
   return (
@@ -23,7 +23,7 @@ function GithubBtn() {
         ></path>
       </svg>
     </a>
-  );
+  )
 }
 
-export default GithubBtn;
+export default GithubBtn

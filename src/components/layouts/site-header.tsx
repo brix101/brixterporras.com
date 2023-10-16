@@ -16,7 +16,7 @@ function SiteHeader() {
       <div className="md:container">
         <div
           className={cn(
-            "flex items-center space-x-2 border-b p-4 md:px-8 md:py-4 transition-all md:rounded-xl md:border",
+            "flex items-center space-x-2 border-b p-4 transition-all md:rounded-xl md:border md:px-8 md:py-4",
             isOffset
               ? "border-primary bg-background/95 backdrop-blur-sm md:mt-2"
               : "border-transparent",

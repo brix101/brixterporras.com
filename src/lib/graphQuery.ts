@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/env.mjs"
 
 export async function graphQuery<T>(
   query: string,
@@ -14,8 +14,8 @@ export async function graphQuery<T>(
       query,
       variables,
     }),
-  });
+  })
 
-  const res: T = await response.json();
-  return res;
+  const res: T = await response.json()
+  return res
 }

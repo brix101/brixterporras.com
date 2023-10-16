@@ -7,6 +7,6 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/brixter-porras",
     github: "https://github.com/Brix101",
   },
-};
+}
 
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof siteConfig

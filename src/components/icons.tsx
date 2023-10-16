@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import { MessageSquare, Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils"
+import { MessageSquare, Moon, Sun } from "lucide-react"
 
-type IconProps = React.HTMLAttributes<SVGElement>;
+type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
   moon: Moon,
@@ -43,4 +43,4 @@ export const Icons = {
       />
     </svg>
   ),
-};
+}

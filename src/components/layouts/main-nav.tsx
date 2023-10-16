@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import Link from "next/link";
+import Link from "next/link"
 
-import { siteConfig } from "@/config/site";
-import { cn, handleScroll } from "@/lib/utils";
+import { siteConfig } from "@/config/site"
+import { cn, handleScroll } from "@/lib/utils"
 
-import { Icons } from "@/components/icons";
-import { buttonVariants } from "@/components/ui/button";
-import { navButtons } from "@/config/docs";
+import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
+import { navButtons } from "@/config/docs"
 
 interface Props {
-  isOffset?: boolean;
-  activeSection: string | null;
+  isOffset?: boolean
+  activeSection: string | null
 }
 
 export function MainNav({ isOffset, activeSection }: Props) {
   const secNavButtons = navButtons.map((item, index) => {
-    const isActive = item.sectionId === activeSection;
+    const isActive = item.sectionId === activeSection
     if (item.isHidden) {
-      return;
+      return
     }
 
     return (
@@ -36,15 +36,15 @@ export function MainNav({ isOffset, activeSection }: Props) {
       >
         {item.label}
       </Link>
-    );
-  });
+    )
+  })
 
   return (
     <div className="hidden w-full items-center justify-between md:flex">
       <div>
         <Link
           className={cn(
-            "flex items-center space-x-2 pointer-events-auto",
+            "pointer-events-auto flex items-center space-x-2",
             !isOffset ? "hidden" : "visible",
           )}
           href="#section-hero"
@@ -58,5 +58,5 @@ export function MainNav({ isOffset, activeSection }: Props) {
       </div>
       <div className="space-x-2">{secNavButtons}</div>
     </div>
-  );
+  )
 }

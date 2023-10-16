@@ -1,35 +1,35 @@
-import { Separator } from "@/components/ui/separator";
-import { graphQuery } from "@/lib/graphQuery";
+import { Separator } from "@/components/ui/separator"
+import { graphQuery } from "@/lib/graphQuery"
 
 interface RepoNode {
-  name: string;
+  name: string
   languages: {
     edges: {
       node: {
-        name: string;
-        color: string;
-      };
-      size: number;
-    }[];
-  };
+        name: string
+        color: string
+      }
+      size: number
+    }[]
+  }
 }
 
 interface GraphQLResponse {
   data: {
     user: {
       repositories: {
-        nodes: RepoNode[];
-      };
-    };
-  };
+        nodes: RepoNode[]
+      }
+    }
+  }
 }
 
 interface Language {
-  name: string;
-  color: string;
-  size: number;
-  count: number;
-  percent?: number;
+  name: string
+  color: string
+  size: number
+  count: number
+  percent?: number
 }
 
 const query = `
@@ -51,52 +51,52 @@ query userInfo($login: String!) {
     }
   }
 }
-`;
+`
 
 async function getTopLanguages() {
   const res = await graphQuery<GraphQLResponse>(query, {
     login: "brix101",
-  });
+  })
 
-  const repoNodes = res.data.user.repositories.nodes;
+  const repoNodes = res.data.user.repositories.nodes
 
-  const excludedLangSet = new Set(["HTML", "CSS", "SCSS", "Scheme"]);
+  const excludedLangSet = new Set(["HTML", "CSS", "SCSS", "Scheme"])
 
   const topLangs = repoNodes
     .filter(node => node.languages.edges.length > 0)
     .flatMap(node => node.languages.edges)
     .reduce((acc, curr) => {
-      const name = curr.node.name;
+      const name = curr.node.name
       if (!excludedLangSet.has(name)) {
-        const langSize = curr.size;
-        const existingLang = acc.find(item => item.name === name);
+        const langSize = curr.size
+        const existingLang = acc.find(item => item.name === name)
         if (existingLang) {
-          existingLang.size += langSize;
-          existingLang.count += 1;
+          existingLang.size += langSize
+          existingLang.count += 1
         } else {
           acc.push({
             ...curr.node,
             size: langSize,
             count: 1,
-          });
+          })
         }
       }
-      return acc;
+      return acc
     }, new Array<Language>())
-    .sort((a, b) => b.size - a.size);
+    .sort((a, b) => b.size - a.size)
 
-  const totalLanguageSize = topLangs.reduce((acc, curr) => acc + curr.size, 0);
+  const totalLanguageSize = topLangs.reduce((acc, curr) => acc + curr.size, 0)
 
   const langs = topLangs.map(lang => ({
     ...lang,
     percent: parseFloat(((lang.size / totalLanguageSize) * 100).toFixed(2)),
-  }));
+  }))
 
-  return langs;
+  return langs
 }
 
 async function AboutSection() {
-  const data = await getTopLanguages();
+  const data = await getTopLanguages()
 
   return (
     <section id="section-about" className="bg-background-2 pt-20">
@@ -108,27 +108,25 @@ async function AboutSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
-        <div className="grid md:grid-cols-2">    
+        <div className="grid md:grid-cols-2">
           <div></div>
           <div className="flex flex-wrap gap-2">
-          {data.slice(0, 6).map((item, index) => (
-            <div
-              key={index}
-              className="h-24 w-24 border text-center"
-              style={{
-                borderColor: item.color,
-              }}
-            >
-              {item.name}
-            </div>
-          ))}
+            {data.slice(0, 6).map((item, index) => (
+              <div
+                key={index}
+                className="h-24 w-24 border text-center"
+                style={{
+                  borderColor: item.color,
+                }}
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
         </div>
-
-        </div>
-
       </div>
     </section>
-  );
+  )
 }
 
-export default AboutSection;
+export default AboutSection

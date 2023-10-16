@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator"
 
 function ExperienceSection() {
   return (
@@ -13,7 +13,7 @@ function ExperienceSection() {
         <Separator className="bg-primary" />
       </div>
     </section>
-  );
+  )
 }
 
-export default ExperienceSection;
+export default ExperienceSection

@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { Icons } from "@/components/icons";
-import { useTheme } from "next-themes";
-import { Button } from "./ui/button";
+import { Icons } from "@/components/icons"
+import { useTheme } from "next-themes"
+import { Button } from "./ui/button"
 
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme();
-  const isDark = theme === "dark";
+  const { setTheme, theme } = useTheme()
+  const isDark = theme === "dark"
 
   return (
     <Button
@@ -19,5 +19,5 @@ export function ModeToggle() {
       <Icons.moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  );
+  )
 }

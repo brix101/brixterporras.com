@@ -1,4 +1,4 @@
-import { SectionNavItem } from "@/types/nav";
+import { SectionNavItem } from "@/types/nav"
 
 export const navButtons: Array<SectionNavItem> = [
   {
@@ -18,4 +18,4 @@ export const navButtons: Array<SectionNavItem> = [
     sectionId: "section-experience",
     label: "Experiece",
   },
-];
+]

@@ -1,51 +1,51 @@
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { graphQuery } from "@/lib/graphQuery";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { graphQuery } from "@/lib/graphQuery"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 interface PinnedData {
-  id: string;
-  name: string;
-  url: string;
-  description: string;
-  homepageUrl: string;
+  id: string
+  name: string
+  url: string
+  description: string
+  homepageUrl: string
   object: {
-    text: string;
-  };
+    text: string
+  }
   languages: {
-    edges: LanguageEdge[];
-  };
+    edges: LanguageEdge[]
+  }
   repositoryTopics: {
-    edges: TopicEdge[];
-  };
+    edges: TopicEdge[]
+  }
 }
 
 interface LanguageEdge {
-  size: number;
+  size: number
   node: {
-    color: string;
-    name: string;
-  };
+    color: string
+    name: string
+  }
 }
 
 interface TopicEdge {
   node: {
     topic: {
-      name: string;
-    };
-  };
+      name: string
+    }
+  }
 }
 
 interface PinnedResponse {
   data: {
     user: {
       pinnedItems: {
-        nodes: PinnedData[];
-      };
-    };
-  };
+        nodes: PinnedData[]
+      }
+    }
+  }
 }
 
 const query = `
@@ -87,21 +87,21 @@ query userInfo($login: String!) {
     }
   }
 }
-`;
+`
 
 async function getPinnedProjects() {
   const res = await graphQuery<PinnedResponse>(query, {
     login: "brix101",
-  });
+  })
 
-  return res.data.user.pinnedItems.nodes;
+  return res.data.user.pinnedItems.nodes
 }
 
 async function ProjectSection() {
-  const pinnedProjects = await getPinnedProjects();
+  const pinnedProjects = await getPinnedProjects()
 
   return (
-    <section id="section-project" className="bg-background pt-20 pb-10">
+    <section id="section-project" className="bg-background pb-10 pt-20">
       <div className="container min-h-screen space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
@@ -146,7 +146,7 @@ async function ProjectSection() {
                   </Link>
                 </div>
                 {item.repositoryTopics.edges.map((topic, index) => {
-                  return <p key={index}>{topic.node.topic.name}</p>;
+                  return <p key={index}>{topic.node.topic.name}</p>
                 })}
               </CardContent>
             </Card>
@@ -154,7 +154,7 @@ async function ProjectSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default ProjectSection;
+export default ProjectSection
