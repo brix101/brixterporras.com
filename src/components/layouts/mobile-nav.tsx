@@ -1,6 +1,5 @@
 "use client"
 
-import { ViewVerticalIcon } from "@radix-ui/react-icons"
 import Link, { LinkProps } from "next/link"
 import * as React from "react"
 
@@ -38,48 +37,48 @@ export function MobileNav({ isOffset, activeSection }: Props) {
         </Link>
       </div>
       <div className="space-x-2">
-        {
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size={"icon"}
-                className="border-primary text-base hover:bg-background  hover:text-primary focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-              >
-                <ViewVerticalIcon className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="pr-0">
-              <MobileLink
-                className="flex items-center"
-                onOpenChange={setOpen}
-                href="#section-hero"
-              >
-                <Icons.mainLogo className="mr-2 h-4 w-4" />
-                <span className="font-bold">{siteConfig.name}</span>
-              </MobileLink>
-              <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-                <div className="flex flex-col space-y-3">
-                  {navButtons?.map((item, index) => (
-                    <React.Fragment key={index}>
-                      {!item.isHidden && (
-                        <MobileLink
-                          href={"#" + item.sectionId}
-                          onOpenChange={setOpen}
-                          className="capitalize"
-                          activeSection={activeSection}
-                        >
-                          {item.label}
-                        </MobileLink>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </ScrollArea>
-            </SheetContent>
-          </Sheet>
-        }
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button
+              className={cn(
+                isOffset ? "" : "outline outline-1 outline-primary",
+              )}
+              variant="outline"
+              size="icon"
+            >
+              <Icons.columns className="h-5 w-5" />
+              <span className="sr-only">Toggle Menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="pr-0">
+            <MobileLink
+              className="flex items-center"
+              onOpenChange={setOpen}
+              href="#section-hero"
+            >
+              <Icons.mainLogo className="mr-2 h-4 w-4" />
+              <span className="font-bold">{siteConfig.name}</span>
+            </MobileLink>
+            <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+              <div className="flex flex-col space-y-3">
+                {navButtons?.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {!item.isHidden && (
+                      <MobileLink
+                        href={"#" + item.sectionId}
+                        onOpenChange={setOpen}
+                        className="capitalize"
+                        activeSection={activeSection}
+                      >
+                        {item.label}
+                      </MobileLink>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            </ScrollArea>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   )

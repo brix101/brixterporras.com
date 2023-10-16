@@ -1,16 +1,21 @@
 "use client"
 
 import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
-import { Button } from "./ui/button"
 
-export function ModeToggle() {
+interface Props {
+  isOffset?: boolean
+}
+
+export function ModeToggle({ isOffset }: Props) {
   const { setTheme, theme } = useTheme()
   const isDark = theme === "dark"
 
   return (
     <Button
-      className="border-primary hover:bg-background hover:text-primary"
+      className={cn(isOffset ? "" : "outline outline-1 outline-primary")}
       variant="outline"
       size="icon"
       onClick={() => (isDark ? setTheme("light") : setTheme("dark"))}

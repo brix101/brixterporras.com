@@ -25,7 +25,7 @@ function SiteHeader() {
           <MainNav isOffset={isOffset} activeSection={activeSection} />
           <MobileNav isOffset={isOffset} activeSection={activeSection} />
           <div className="pointer-events-auto flex flex-1 items-center justify-between md:justify-end ">
-            <ModeToggle />
+            <ModeToggle isOffset={isOffset} />
           </div>
         </div>
       </div>
