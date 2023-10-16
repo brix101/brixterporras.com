@@ -1,4 +1,4 @@
-import { SectionShell } from "@/components/shells/shell"
+import { Shell } from "@/components/shells/shell"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator"
 import { graphQuery } from "@/lib/graphQuery"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import Balancer from "react-wrap-balancer"
 
 interface PinnedData {
   id: string
@@ -104,13 +105,15 @@ async function getPinnedProjects() {
 async function ProjectSection() {
   const pinnedProjects = await getPinnedProjects()
   return (
-    <SectionShell id="section-project" className="bg-background">
-      <div className="container space-y-8 ">
-        <div className="w-full">
-          <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
-          <p className="mt-4 text-zinc-400">
+    <Shell id="section-project" variant={"sidebar"}>
+      <div className="container space-y-8">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="text-3xl font-bold leading-[1.1] sm:text-3xl md:text-5xl">
+            Projects
+          </h2>
+          <Balancer className="max-w-[46rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             Check out my highlighted GitHub projects below.
-          </p>
+          </Balancer>
         </div>
         <Separator className="bg-primary" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -166,7 +169,7 @@ async function ProjectSection() {
           ))}
         </div>
       </div>
-    </SectionShell>
+    </Shell>
   )
 }
 

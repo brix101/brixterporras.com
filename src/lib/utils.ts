@@ -22,7 +22,7 @@ export function handleScroll(
   // })
   if (elem) {
     const elemPosition = elem.getBoundingClientRect()
-    const offset = elemPosition.top - 90 // Adjust the offset as needed
+    const offset = elemPosition.top - 85 // Adjust the offset as needed
     window.scrollBy({
       top: offset,
       behavior: "smooth",
