@@ -1,5 +1,13 @@
+import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { graphQuery } from "@/lib/graphQuery"
 import { cn } from "@/lib/utils"
@@ -59,11 +67,6 @@ query userInfo($login: String!) {
           url
           description
           homepageUrl
-          object(expression: "master:README.md") {
-            ... on Blob {
-              text
-            }
-          }
           languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
             edges {
               size
@@ -99,7 +102,6 @@ async function getPinnedProjects() {
 
 async function ProjectSection() {
   const pinnedProjects = await getPinnedProjects()
-
   return (
     <section id="section-project" className="bg-background pb-10 pt-20">
       <div className="container min-h-screen space-y-8 ">
@@ -115,8 +117,17 @@ async function ProjectSection() {
             <Card key={item.id}>
               <CardHeader>
                 <CardTitle>{item.name}</CardTitle>
+                <CardDescription>{item.description}</CardDescription>
               </CardHeader>
               <CardContent>
+                <div>Topics</div>
+                <div className="flex flex-wrap gap-1">
+                  {item.repositoryTopics.edges.map((topic, index) => {
+                    return <Badge key={index}>{topic.node.topic.name}</Badge>
+                  })}
+                </div>
+              </CardContent>
+              <CardFooter className="">
                 <div className="flex space-x-2">
                   {item.homepageUrl != "" ? (
                     <Link
@@ -145,10 +156,7 @@ async function ProjectSection() {
                     Github
                   </Link>
                 </div>
-                {item.repositoryTopics.edges.map((topic, index) => {
-                  return <p key={index}>{topic.node.topic.name}</p>
-                })}
-              </CardContent>
+              </CardFooter>
             </Card>
           ))}
         </div>

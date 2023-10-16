@@ -16,6 +16,10 @@ export async function graphQuery<T>(
     }),
   })
 
+  if (!response.ok) {
+    return [] as T
+  }
+
   const res: T = await response.json()
   return res
 }
