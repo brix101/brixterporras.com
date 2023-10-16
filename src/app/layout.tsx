@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: ["Brixter Porras"],
   authors: [
     {
       name: "brix101",
@@ -40,12 +41,19 @@ export const metadata: Metadata = {
       },
     ],
   },
-  icons: {
-    icon: "/brix.svg",
-    // shortcut: "/favicon-16x16.png",
-    // apple: "/apple-touch-icon.png",
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@shadcn",
   },
-  // manifest: `${siteConfig.url}/site.webmanifest`,
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 export default function RootLayout({
