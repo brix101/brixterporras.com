@@ -17,7 +17,15 @@ export function handleScroll(
   const href = e.currentTarget.href
   const targetId = href.replace(/.*\#/, "")
   const elem = document.getElementById(targetId)
-  elem?.scrollIntoView({
-    behavior: "smooth",
-  })
+  // elem?.scrollIntoView({
+  //   behavior: "smooth",
+  // })
+  if (elem) {
+    const elemPosition = elem.getBoundingClientRect()
+    const offset = elemPosition.top - 90 // Adjust the offset as needed
+    window.scrollBy({
+      top: offset,
+      behavior: "smooth",
+    })
+  }
 }

@@ -1,3 +1,4 @@
+import { SectionShell } from "@/components/shells/shell"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -103,8 +104,8 @@ async function getPinnedProjects() {
 async function ProjectSection() {
   const pinnedProjects = await getPinnedProjects()
   return (
-    <section id="section-project" className="bg-background pb-10 pt-20">
-      <div className="container min-h-screen space-y-8 ">
+    <SectionShell id="section-project" className="bg-background">
+      <div className="container space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">Projects</h2>
           <p className="mt-4 text-zinc-400">
@@ -123,7 +124,11 @@ async function ProjectSection() {
                 <div>Topics</div>
                 <div className="flex flex-wrap gap-1">
                   {item.repositoryTopics.edges.map((topic, index) => {
-                    return <Badge key={index}>{topic.node.topic.name}</Badge>
+                    return (
+                      <Badge className="cursor-default" key={index}>
+                        {topic.node.topic.name}
+                      </Badge>
+                    )
                   })}
                 </div>
               </CardContent>
@@ -161,7 +166,7 @@ async function ProjectSection() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 

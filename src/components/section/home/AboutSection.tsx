@@ -1,3 +1,4 @@
+import { SectionShell } from "@/components/shells/shell"
 import { Separator } from "@/components/ui/separator"
 import { graphQuery } from "@/lib/graphQuery"
 
@@ -99,8 +100,8 @@ async function AboutSection() {
   const data = await getTopLanguages()
 
   return (
-    <section id="section-about" className="bg-background-2 pt-20">
-      <div className="container min-h-screen space-y-8 ">
+    <SectionShell id="section-about" className="bg-background-2">
+      <div className="container space-y-8 ">
         <div className="w-full">
           <h2 className="text-3xl font-bold sm:text-4xl">About me</h2>
           <p className="mt-4 text-zinc-400">
@@ -108,8 +109,8 @@ async function AboutSection() {
           </p>
         </div>
         <Separator className="bg-primary" />
-        <div className="grid md:grid-cols-2">
-          <div></div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="min h-[calc(100vh-40vh)] bg-red-100"></div>
           <div className="flex flex-wrap gap-2">
             {data.slice(0, 6).map((item, index) => (
               <div
@@ -125,7 +126,7 @@ async function AboutSection() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 
