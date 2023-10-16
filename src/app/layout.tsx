@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@shadcn",
+    creator: "@Brixyz101",
   },
   icons: {
     icon: "/favicon.ico",
