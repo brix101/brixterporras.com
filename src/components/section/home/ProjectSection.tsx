@@ -21,6 +21,9 @@ interface PinnedData {
   url: string
   description: string
   homepageUrl: string
+  stargazers: {
+    totalCount: number
+  }
   object: {
     text: string
   }
@@ -69,6 +72,9 @@ query userInfo($login: String!) {
           url
           description
           homepageUrl
+          stargazers {
+            totalCount
+          }
           languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
             edges {
               size
