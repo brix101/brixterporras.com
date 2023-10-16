@@ -128,7 +128,11 @@ async function ProjectSection() {
                 <div className="flex flex-wrap gap-1">
                   {item.repositoryTopics.edges.map((topic, index) => {
                     return (
-                      <Badge className="cursor-default" key={index}>
+                      <Badge
+                        className="cursor-default uppercase"
+                        variant={"secondary"}
+                        key={index}
+                      >
                         {topic.node.topic.name}
                       </Badge>
                     )
