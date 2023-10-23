@@ -171,7 +171,7 @@ async function AboutSection() {
                 {tools.map((tool, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-3 rounded-lg border bg-card p-4 text-card-foreground shadow-sm"
+                    className="grid w-full grid-cols-3 rounded-lg border bg-card p-4 text-card-foreground shadow-sm sm:w-auto"
                   >
                     <CardHeader className="col-span-2 w-36 p-0">
                       <CardTitle>{tool.label}</CardTitle>
