@@ -157,7 +157,7 @@ async function AboutSection() {
           <Card className="min h-[calc(100vh-40vh)]">
             <CardHeader></CardHeader>
             <CardContent>
-              Hello, I'm
+              Hello, I&rsquo;m
               <h1 className="text-2xl text-primary">Brixter Porras</h1> a
               Sortware developer from bukidnon 🇵🇭
             </CardContent>
