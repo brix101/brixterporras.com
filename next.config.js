@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["img.icons8.com", "www.rust-lang.org", "go.dev", "www.vim.org"],
+    domains: ["img.icons8.com", "www.rust-lang.org", "www.vim.org"],
   },
 }
 

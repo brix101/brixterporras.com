@@ -1,3 +1,4 @@
+import wave from "@/assets/wave.gif"
 import { Shell } from "@/components/shells/shell"
 import {
   Card,
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { graphQuery } from "@/lib/graphQuery"
-import { Tool } from "@/types"
+import { Info } from "@/types"
 import Image from "next/image"
 import { Balancer } from "react-wrap-balancer"
 
@@ -71,7 +72,14 @@ async function getTopLanguages() {
 
   const repoNodes = res.data.user.repositories.nodes
 
-  const excludedLangSet = new Set(["HTML", "CSS", "SCSS", "Scheme"])
+  const excludedLangSet = new Set([
+    "HTML",
+    "CSS",
+    "SCSS",
+    "Scheme",
+    "Lua",
+    "Shell",
+  ])
 
   const topLangs = repoNodes
     .filter(node => node.languages.edges.length > 0)
@@ -98,10 +106,12 @@ async function getTopLanguages() {
 
   const totalLanguageSize = topLangs.reduce((acc, curr) => acc + curr.size, 0)
 
-  const langs = topLangs.map(lang => ({
-    ...lang,
-    percent: parseFloat(((lang.size / totalLanguageSize) * 100).toFixed(2)),
-  }))
+  const langs = topLangs
+    .map(lang => ({
+      ...lang,
+      percent: parseFloat(((lang.size / totalLanguageSize) * 100).toFixed(2)),
+    }))
+    .filter(lang => lang.percent > 1)
 
   return langs
 }
@@ -109,15 +119,17 @@ async function getTopLanguages() {
 const languageLogo = {
   TypeScript: "https://img.icons8.com/color/480/000000/typescript.png",
   JavaScript: "https://img.icons8.com/color/480/000000/javascript.png",
-  Java: "https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png",
-  "C#": "https://img.icons8.com/color/48/c-sharp-logo.png",
-  Go: "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png",
+  Java: "https://img.icons8.com/color/480/java-coffee-cup-logo--v1.png",
+  "C#": "https://img.icons8.com/color/480/c-sharp-logo.png",
+  Go: "https://img.icons8.com/color/480/golang.png",
   Rust: "https://www.rust-lang.org/logos/rust-logo-64x64.png",
+  Python: "https://img.icons8.com/color/480/python--v1.png",
+  Kotlin: "https://img.icons8.com/color/480/kotlin.png",
 }
 
-const tools: Tool[] = [
+const tools: Info[] = [
   {
-    label: "Linux (Arch)",
+    label: "Linux (Arch / Nix)",
     description: "Operating System",
     logo: "https://img.icons8.com/color/480/linux--v1.png",
   },
@@ -127,12 +139,12 @@ const tools: Tool[] = [
     logo: "https://img.icons8.com/color/480/visual-studio-code-2019.png",
   },
   {
-    label: "Vim/Neovim",
+    label: "Vim / Neovim",
     description: "Text Editor",
     logo: "https://www.vim.org/images/vimlogo.svg",
   },
   {
-    label: "Git/Github",
+    label: "Git / Github",
     description: "Version Control",
     logo: "https://img.icons8.com/color/480/git.png",
   },
@@ -149,31 +161,55 @@ async function AboutSection() {
             About me
           </h2>
           <Balancer className="max-w-[46rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Here are some interesting facts about me.
+            Here are some information about myself.
           </Balancer>
         </div>
         <Separator className="bg-primary" />
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card className="min h-[calc(100vh-40vh)]">
-            <CardHeader></CardHeader>
-            <CardContent>
-              Hello, I&rsquo;m
-              <h1 className="text-2xl text-primary">Brixter Porras</h1> a
-              Sortware developer from bukidnon 🇵🇭
-            </CardContent>
-          </Card>
-          <div>
+        <div className="flex justify-center">
+          <div className="flex max-w-4xl flex-col space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex gap-2 text-2xl font-bold tracking-tighter">
+                  <span>Hello, I&rsquo;m Brixter porras</span>
+                  <Image
+                    src={wave}
+                    height={0}
+                    width={0}
+                    className="h-8 w-8"
+                    alt="hi"
+                  />
+                  {/* 👋 */}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Balancer className="max-w-3xl leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+                  A software developer and musician based in the Philippines.
+                  Over the last four years, I&rsquo;ve enthusiastically delved
+                  into the world of sacred runes and mysterious rituals, driven
+                  by my genuine love for the craft and the digital realm.
+                  <br />
+                  <br />
+                  Balancing my deep affection for both technology and music, I
+                  approach my work with an unwavering commitment, dedicating my
+                  efforts to infuse every project with a touch of artistry and
+                  technical finesse. My aspiration is to continue creating
+                  meaningful experiences that resonate with audiences, while
+                  consistently seeking new opportunities to learn and expand my
+                  expertise.
+                </Balancer>
+              </CardContent>
+            </Card>
             <Card className="border-none bg-transparent shadow-none">
               <CardHeader className="pt-0">
                 <CardTitle>Tools I use.</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-4 px-0 sm:px-2">
+              <CardContent className="grid gap-4 px-0 sm:grid-cols-2 sm:px-2">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
-                    className="grid w-full grid-cols-3 rounded-lg border bg-card p-4 text-card-foreground shadow-sm sm:w-auto"
+                    className="grid w-full grid-cols-3 items-center rounded-lg border bg-card p-4 text-card-foreground shadow-sm md:w-auto"
                   >
-                    <CardHeader className="col-span-2 w-36 p-0">
+                    <CardHeader className="col-span-2 p-0">
                       <CardTitle>{tool.label}</CardTitle>
                       <CardDescription>{tool.description}</CardDescription>
                     </CardHeader>
@@ -191,15 +227,13 @@ async function AboutSection() {
             </Card>
             <Card className="border-none bg-transparent shadow-none">
               <CardHeader className="pt-0">
-                <CardTitle>
-                  Top language I use based on my github stats.
-                </CardTitle>
+                <CardTitle>Languages I use based on my github stats.</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-4 px-0 sm:px-2">
-                {data.slice(0, 6).map((item, index) => (
+              <CardContent className="flex flex-wrap gap-2 px-0 sm:px-2 md:gap-4">
+                {data.map((item, index) => (
                   <Card
                     key={index}
-                    className="flex h-24 w-24 flex-col items-center justify-center space-y-2 text-center"
+                    className="flex h-20 w-20 flex-col items-center justify-center space-y-2 text-center sm:h-24 sm:w-24"
                     style={{
                       borderColor: item.color,
                     }}

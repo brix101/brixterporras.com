@@ -1,4 +1,5 @@
-import GithubBtn from "@/components/GithubBtn"
+import ContactButton from "@/components/button-contact"
+import GithubBtn from "@/components/button-github"
 import SiteHeader from "@/components/layouts/site-header"
 import AboutSection from "@/components/section/home/AboutSection"
 import ExperienceSection from "@/components/section/home/ExperienceSection"
@@ -14,6 +15,7 @@ export default function Home() {
       <AboutSection />
       <ProjectSection />
       <ExperienceSection />
+      <ContactButton />
     </main>
   )
 }
