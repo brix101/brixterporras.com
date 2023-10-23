@@ -167,7 +167,7 @@ async function AboutSection() {
               <CardHeader className="pt-0">
                 <CardTitle>Tools I use.</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-4">
+              <CardContent className="flex flex-wrap gap-4 px-0 sm:px-2">
                 {tools.map((tool, index) => (
                   <div
                     key={index}
@@ -195,7 +195,7 @@ async function AboutSection() {
                   Top language I use based on my github stats.
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-4">
+              <CardContent className="flex flex-wrap gap-4 px-0 sm:px-2">
                 {data.slice(0, 6).map((item, index) => (
                   <Card
                     key={index}
