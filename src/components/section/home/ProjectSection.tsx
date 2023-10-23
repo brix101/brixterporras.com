@@ -118,7 +118,8 @@ async function ProjectSection() {
             Projects
           </h2>
           <Balancer className="max-w-[46rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Check out my highlighted GitHub projects below.
+            Here are the pinned projects from my Github. <br />
+            I&rsquo;m currently actively working on some of these projects.
           </Balancer>
         </div>
         <Separator className="bg-primary" />
@@ -131,6 +132,7 @@ async function ProjectSection() {
               </CardHeader>
               <CardContent>
                 <div>Topics</div>
+
                 <div className="flex flex-wrap gap-1">
                   {item.repositoryTopics.edges.map((topic, index) => {
                     return (

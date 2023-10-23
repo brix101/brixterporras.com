@@ -14,6 +14,7 @@ export async function graphQuery<T>(
       query,
       variables,
     }),
+    cache: "no-store",
   })
 
   if (!response.ok) {

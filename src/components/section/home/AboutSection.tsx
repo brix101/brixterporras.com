@@ -1,6 +1,15 @@
 import { Shell } from "@/components/shells/shell"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { graphQuery } from "@/lib/graphQuery"
+import { Tool } from "@/types"
+import Image from "next/image"
 import { Balancer } from "react-wrap-balancer"
 
 interface RepoNode {
@@ -97,6 +106,38 @@ async function getTopLanguages() {
   return langs
 }
 
+const languageLogo = {
+  TypeScript: "https://img.icons8.com/color/480/000000/typescript.png",
+  JavaScript: "https://img.icons8.com/color/480/000000/javascript.png",
+  Java: "https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png",
+  "C#": "https://img.icons8.com/color/48/c-sharp-logo.png",
+  Go: "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png",
+  Rust: "https://www.rust-lang.org/logos/rust-logo-64x64.png",
+}
+
+const tools: Tool[] = [
+  {
+    label: "Linux (Arch)",
+    description: "Operating System",
+    logo: "https://img.icons8.com/color/480/linux--v1.png",
+  },
+  {
+    label: "Vs code",
+    description: "Text Editor",
+    logo: "https://img.icons8.com/color/480/visual-studio-code-2019.png",
+  },
+  {
+    label: "Vim/Neovim",
+    description: "Text Editor",
+    logo: "https://www.vim.org/images/vimlogo.svg",
+  },
+  {
+    label: "Git/Github",
+    description: "Version Control",
+    logo: "https://img.icons8.com/color/480/git.png",
+  },
+]
+
 async function AboutSection() {
   const data = await getTopLanguages()
 
@@ -108,24 +149,74 @@ async function AboutSection() {
             About me
           </h2>
           <Balancer className="max-w-[46rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Some of the projects are from work and some are on my own time.
+            Here are some interesting facts about me.
           </Balancer>
         </div>
         <Separator className="bg-primary" />
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="min h-[calc(100vh-40vh)] bg-red-100"></div>
-          <div className="flex flex-wrap gap-2">
-            {data.slice(0, 6).map((item, index) => (
-              <div
-                key={index}
-                className="h-24 w-24 border text-center"
-                style={{
-                  borderColor: item.color,
-                }}
-              >
-                {item.name}
-              </div>
-            ))}
+          <Card className="min h-[calc(100vh-40vh)]">
+            <CardHeader></CardHeader>
+            <CardContent>
+              Hello, I'm
+              <h1 className="text-2xl text-primary">Brixter Porras</h1> a
+              Sortware developer from bukidnon 🇵🇭
+            </CardContent>
+          </Card>
+          <div>
+            <Card className="border-none bg-transparent shadow-none">
+              <CardHeader className="pt-0">
+                <CardTitle>Tools I use.</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-4">
+                {tools.map((tool, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-3 rounded-lg border bg-card p-4 text-card-foreground shadow-sm"
+                  >
+                    <CardHeader className="col-span-2 w-36 p-0">
+                      <CardTitle>{tool.label}</CardTitle>
+                      <CardDescription>{tool.description}</CardDescription>
+                    </CardHeader>
+                    <div className="col-span-1 flex items-center justify-center">
+                      <Image
+                        src={tool.logo}
+                        width={50}
+                        height={50}
+                        alt={tool.label}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+            <Card className="border-none bg-transparent shadow-none">
+              <CardHeader className="pt-0">
+                <CardTitle>
+                  Top language I use based on my github stats.
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-4">
+                {data.slice(0, 6).map((item, index) => (
+                  <Card
+                    key={index}
+                    className="flex h-24 w-24 flex-col items-center justify-center space-y-2 text-center"
+                    style={{
+                      borderColor: item.color,
+                    }}
+                  >
+                    <Image
+                      src={languageLogo[item.name as keyof typeof languageLogo]}
+                      width={50}
+                      height={50}
+                      alt={item.name}
+                    />
+                    <CardDescription className="text-bold">
+                      {item.name}
+                    </CardDescription>
+                  </Card>
+                ))}
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
