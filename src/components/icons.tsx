@@ -1,5 +1,13 @@
 import { cn } from "@/lib/utils"
-import { Columns, Contact, MessageSquare, Moon, Sun } from "lucide-react"
+import {
+  Check,
+  Columns,
+  Contact,
+  Copy,
+  MessageSquare,
+  Moon,
+  Sun,
+} from "lucide-react"
 
 type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -9,6 +17,8 @@ export const Icons = {
   columns: Columns,
   messageSquare: MessageSquare,
   contact: Contact,
+  copy: Copy,
+  check: Check,
   mainLogo: ({ className, ...props }: IconProps) => (
     <svg
       viewBox="0 0 100 100"
