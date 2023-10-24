@@ -15,7 +15,7 @@ function ExperienceSection() {
             Experience
           </h2>
           <Balancer className="max-w-[46rem] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Some of the projects are from work and some are on my own time.
+            Here are some of my experience
           </Balancer>
         </div>
         <Separator className="bg-primary" />
