@@ -169,13 +169,13 @@ async function AboutSection() {
           <div className="flex max-w-4xl flex-col space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle className="flex gap-2 text-2xl font-bold tracking-tighter">
-                  <span>Hello, I&rsquo;m Brixter porras</span>
+                <CardTitle className="flex gap-2 text-lg sm:text-2xl font-bold tracking-tighter">
+                  <span>Hello, I&rsquo;m Brixter Porras</span>
                   <Image
                     src={wave}
                     height={0}
                     width={0}
-                    className="h-8 w-8"
+                    className="h-5 w-5 md:h-8 md:w-8"
                     alt="hi"
                   />
                   {/* 👋 */}
@@ -205,9 +205,9 @@ async function AboutSection() {
               </CardHeader>
               <CardContent className="grid gap-4 px-0 sm:grid-cols-2 sm:px-2">
                 {tools.map((tool, index) => (
-                  <div
+                  <Card
                     key={index}
-                    className="grid w-full grid-cols-3 items-center rounded-lg border bg-card p-4 text-card-foreground shadow-sm md:w-auto"
+                    className="grid w-full grid-cols-3 p-4 items-center  md:w-auto hover:scale-105 transition-all"
                   >
                     <CardHeader className="col-span-2 p-0">
                       <CardTitle>{tool.label}</CardTitle>
@@ -221,19 +221,19 @@ async function AboutSection() {
                         alt={tool.label}
                       />
                     </div>
-                  </div>
+                  </Card>
                 ))}
               </CardContent>
             </Card>
             <Card className="border-none bg-transparent shadow-none">
               <CardHeader className="pt-0">
-                <CardTitle>Languages I use based on my github stats.</CardTitle>
+                <CardTitle><Balancer>Languages I use based on my github stats. </Balancer></CardTitle>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2 px-0 sm:px-2 md:gap-4 justify-center">
                 {data.map((item, index) => (
                   <Card
                     key={index}
-                    className="flex h-20 w-20 flex-col items-center justify-center space-y-2 text-center sm:h-24 sm:w-24"
+                    className="flex h-20 w-20 flex-col items-center justify-center space-y-2 text-center sm:h-24 sm:w-24 hover:scale-105 transition-all"
                     style={{
                       borderColor: item.color,
                     }}
