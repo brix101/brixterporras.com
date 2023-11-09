@@ -108,6 +108,8 @@ async function getPinnedProjects() {
   return res.data.user.pinnedItems.nodes
 }
 
+export const dynamic = "force-dynamic"
+
 async function ProjectSection() {
   const pinnedProjects = await getPinnedProjects()
   return (
