@@ -169,7 +169,7 @@ async function AboutSection() {
           <div className="flex max-w-4xl flex-col space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle className="flex gap-2 text-lg sm:text-2xl font-bold tracking-tighter">
+                <CardTitle className="flex gap-2 text-lg font-bold tracking-tighter sm:text-2xl">
                   <span>Hello, I&rsquo;m Brixter Porras</span>
                   <Image
                     src={wave}
@@ -207,7 +207,7 @@ async function AboutSection() {
                 {tools.map((tool, index) => (
                   <Card
                     key={index}
-                    className="grid w-full grid-cols-3 p-4 items-center  md:w-auto hover:scale-105 transition-all"
+                    className="grid w-full grid-cols-3 items-center p-4  transition-all hover:scale-105 md:w-auto"
                   >
                     <CardHeader className="col-span-2 p-0">
                       <CardTitle>{tool.label}</CardTitle>
@@ -227,13 +227,17 @@ async function AboutSection() {
             </Card>
             <Card className="border-none bg-transparent shadow-none">
               <CardHeader className="pt-0">
-                <CardTitle><Balancer>Languages I use based on my github stats. </Balancer></CardTitle>
+                <CardTitle>
+                  <Balancer>
+                    Languages I use based on my github stats.{" "}
+                  </Balancer>
+                </CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-2 px-0 sm:px-2 md:gap-4 justify-center">
+              <CardContent className="flex flex-wrap justify-center gap-2 px-0 sm:px-2 md:gap-4">
                 {data.map((item, index) => (
                   <Card
                     key={index}
-                    className="flex h-20 w-20 flex-col items-center justify-center space-y-2 text-center sm:h-24 sm:w-24 hover:scale-105 transition-all"
+                    className="flex h-20 w-20 flex-col items-center justify-center space-y-2 text-center transition-all hover:scale-105 sm:h-24 sm:w-24"
                     style={{
                       borderColor: item.color,
                     }}

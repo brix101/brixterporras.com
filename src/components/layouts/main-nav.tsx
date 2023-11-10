@@ -20,6 +20,7 @@ export function MainNav({ isOffset, activeSection }: Props) {
     if (item.isHidden) {
       return
     }
+    const href = item.href ?? "#" + item.sectionId
 
     return (
       <Link
@@ -32,8 +33,8 @@ export function MainNav({ isOffset, activeSection }: Props) {
             size: "sm",
           }),
         )}
-        href={"#" + item.sectionId}
-        onClick={handleScroll}
+        href={href}
+        onClick={!item.href ? handleScroll : undefined}
       >
         {item.label}
       </Link>

@@ -15,7 +15,9 @@ export const navButtons: Array<SectionNavItem> = [
     label: "Project",
   },
   {
-    sectionId: "section-experience",
-    label: "Experiece",
+    sectionId: "section-blog",
+    label: "Blog",
+    href: "/blog",
+    isHidden: true,
   },
 ]

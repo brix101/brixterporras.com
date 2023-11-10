@@ -65,7 +65,7 @@ export function MobileNav({ isOffset, activeSection }: Props) {
                   <React.Fragment key={index}>
                     {!item.isHidden && (
                       <MobileLink
-                        href={"#" + item.sectionId}
+                        href={item.href ?? "#" + item.sectionId}
                         onOpenChange={setOpen}
                         className="capitalize"
                         activeSection={activeSection}
@@ -104,7 +104,9 @@ function MobileLink({
     <Link
       href={href}
       onClick={e => {
-        handleScroll(e)
+        if (href.toString().includes("#")) {
+          handleScroll(e)
+        }
         onOpenChange?.(false)
       }}
       className={cn(className, isActive && "text-primary")}

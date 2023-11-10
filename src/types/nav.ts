@@ -1,5 +1,6 @@
 export interface SectionNavItem {
-  sectionId: String
+  sectionId: string
   label: string
   isHidden?: boolean
+  href?: string
 }

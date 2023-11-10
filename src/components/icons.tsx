@@ -1,9 +1,14 @@
 import { cn } from "@/lib/utils"
 import {
+  Briefcase,
   Check,
   Columns,
   Contact,
   Copy,
+  Facebook,
+  Github,
+  GraduationCap,
+  Linkedin,
   MessageSquare,
   Moon,
   Sun,
@@ -19,6 +24,11 @@ export const Icons = {
   contact: Contact,
   copy: Copy,
   check: Check,
+  facebook: Facebook,
+  linked: Linkedin,
+  github: Github,
+  graduationCap: GraduationCap,
+  briefcase: Briefcase,
   mainLogo: ({ className, ...props }: IconProps) => (
     <svg
       viewBox="0 0 100 100"
