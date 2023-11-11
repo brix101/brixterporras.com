@@ -2,7 +2,7 @@
 
 import { handleScroll } from "@/lib/utils"
 import Link from "next/link"
-import { Icons } from "./icons"
+import { Icons } from "@/components/icons"
 
 export function HeroLogo() {
   return (

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { Icons } from "../icons"
-import { buttonVariants } from "../ui/button"
+import { Icons } from "@/components/icons"
+import { buttonVariants } from "@/components/ui/button"
 
 interface LinkItem {
   href: string

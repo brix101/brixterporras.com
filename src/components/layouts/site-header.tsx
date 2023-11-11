@@ -4,8 +4,8 @@ import { ModeToggle } from "@/components/mode-toggle"
 import useActiveSection from "@/hooks/useActiveSection"
 import useScrollOffset from "@/hooks/useScrollOffset"
 import { cn } from "@/lib/utils"
-import { MainNav } from "./main-nav"
-import { MobileNav } from "./mobile-nav"
+import { MainNav } from "@/components/layouts/main-nav"
+import { MobileNav } from "@/components/layouts/mobile-nav"
 
 function SiteHeader() {
   const isOffset = useScrollOffset(20)

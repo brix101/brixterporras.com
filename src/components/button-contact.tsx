@@ -2,15 +2,15 @@
 
 import useScrollOffset from "@/hooks/useScrollOffset"
 import * as React from "react"
-import { Icons } from "./icons"
-import { Button } from "./ui/button"
+import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog"
+} from "@/components/ui/dialog"
 
 export async function copyToClipboardWithMeta(value: string) {
   navigator.clipboard.writeText(value)
