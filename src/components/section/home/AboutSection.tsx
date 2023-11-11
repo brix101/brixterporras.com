@@ -183,20 +183,20 @@ async function AboutSection() {
               </CardHeader>
               <CardContent>
                 <Balancer className="max-w-3xl leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                  A software developer and musician based in the Philippines.
+                  I am software developer and musician based in the Philippines.
+                  <br />
                   Over the last four years, I&rsquo;ve enthusiastically delved
                   into the world of sacred runes and mysterious rituals, driven
                   by my genuine love for the craft and the digital realm.
                   <br />
-                  <br />
-                  Balancing my deep affection for both technology and music, I
-                  approach my work with an unwavering commitment, dedicating my
-                  efforts to infuse every project with a touch of artistry and
-                  technical finesse. Being largely self-taught, I bring a unique
-                  perspective to my endeavors. My aspiration is to continue
-                  creating meaningful experiences that resonate with audiences,
-                  while consistently seeking new opportunities to learn and
-                  expand my expertise.
+                  <br />I balance my deep affection for both technology and
+                  music by approaching my work with an unwavering commitment,
+                  dedicating my efforts to infuse every project with a touch of
+                  artistry and technical finesse. Being largely self-taught, I
+                  bring a unique perspective to my endeavors. My aspiration is
+                  to continue creating meaningful experiences that resonate with
+                  audiences, while consistently seeking new opportunities to
+                  learn and expand my expertise.
                 </Balancer>
               </CardContent>
             </Card>
