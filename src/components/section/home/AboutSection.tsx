@@ -192,10 +192,11 @@ async function AboutSection() {
                   Balancing my deep affection for both technology and music, I
                   approach my work with an unwavering commitment, dedicating my
                   efforts to infuse every project with a touch of artistry and
-                  technical finesse. My aspiration is to continue creating
-                  meaningful experiences that resonate with audiences, while
-                  consistently seeking new opportunities to learn and expand my
-                  expertise.
+                  technical finesse. Being largely self-taught, I bring a unique
+                  perspective to my endeavors. My aspiration is to continue
+                  creating meaningful experiences that resonate with audiences,
+                  while consistently seeking new opportunities to learn and
+                  expand my expertise.
                 </Balancer>
               </CardContent>
             </Card>
