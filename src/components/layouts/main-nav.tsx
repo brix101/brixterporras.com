@@ -26,12 +26,12 @@ export function MainNav({ isOffset, activeSection }: Props) {
       <Link
         key={index}
         className={cn(
-          "pointer-events-auto bg-background uppercase",
-          isOffset ? "" : "outline outline-1 outline-primary",
+          "pointer-events-auto uppercase",
           buttonVariants({
-            variant: isActive ? "default" : "outline",
+            variant: isActive ? "default" : isOffset ? "link" : "outline",
             size: "sm",
           }),
+          isOffset ? "" : "bg-background text-foreground",
         )}
         href={href}
         onClick={!item.href ? handleScroll : undefined}
