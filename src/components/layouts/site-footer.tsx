@@ -2,11 +2,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { Icons } from "@/components/icons"
 import { buttonVariants } from "@/components/ui/button"
-
-interface LinkItem {
-  href: string
-  icon: keyof typeof Icons
-}
+import { LinkItem } from "@/types"
 
 const links: LinkItem[] = [
   { href: "https://www.facebook.com/brix.porras/", icon: "facebook" },
