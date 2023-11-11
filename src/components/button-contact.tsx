@@ -27,7 +27,7 @@ export default function ContactButton() {
   }, [hasCopied])
 
   return (
-    <div className="fixed bottom-0 z-20 w-full">
+    <div className="pointer-events-none fixed bottom-0 z-20 w-full">
       <div className="fab-container mb-4 px-4 transition-all md:container md:mb-10">
         <Dialog>
           <DialogTrigger asChild>

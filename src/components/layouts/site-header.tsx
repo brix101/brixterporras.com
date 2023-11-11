@@ -18,7 +18,7 @@ function SiteHeader() {
           className={cn(
             "flex items-center space-x-2 border-b p-4 transition-all md:rounded-xl md:border md:px-8 md:py-4",
             isOffset
-              ? "border-primary bg-background/95 backdrop-blur-sm md:mt-2"
+              ? "pointer-events-auto border-primary bg-background/95 backdrop-blur-sm md:mt-2"
               : "border-transparent",
           )}
         >

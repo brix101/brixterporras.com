@@ -406,6 +406,10 @@ body {
   animation-delay: 0.8s;
 }
 
+.fab-container * {
+  pointer-events: auto;
+}
+
 .fab-container .fab-btn {
   box-shadow:
     rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
