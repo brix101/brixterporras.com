@@ -18,6 +18,7 @@ interface RepoNode {
   languages: {
     edges: {
       node: {
+        id: string
         name: string
         color: string
       }
@@ -37,6 +38,7 @@ interface GraphQLResponse {
 }
 
 interface Language {
+  id: string
   name: string
   color: string
   size: number
@@ -54,6 +56,7 @@ query userInfo($login: String!) {
           edges {
             size
             node {
+              id
               color
               name
             }
@@ -81,28 +84,33 @@ async function getTopLanguages() {
     "Shell",
   ])
 
-  const topLangs = repoNodes
-    .filter(node => node.languages.edges.length > 0)
-    .flatMap(node => node.languages.edges)
-    .reduce((acc, curr) => {
-      const name = curr.node.name
-      if (!excludedLangSet.has(name)) {
-        const langSize = curr.size
-        const existingLang = acc.find(item => item.name === name)
-        if (existingLang) {
-          existingLang.size += langSize
-          existingLang.count += 1
-        } else {
-          acc.push({
-            ...curr.node,
-            size: langSize,
-            count: 1,
-          })
+  const topLangs = Array.from(
+    repoNodes
+      .filter(node => node.languages.edges.length > 0)
+      .flatMap(node => node.languages.edges)
+      .reduce((accMap, curr) => {
+        const id = curr.node.id
+        const name = curr.node.name
+
+        if (!excludedLangSet.has(name)) {
+          const langSize = curr.size
+
+          if (accMap.has(id)) {
+            const existingLang = accMap.get(id)!
+            existingLang.size += langSize
+            existingLang.count += 1
+          } else {
+            accMap.set(id, {
+              ...curr.node,
+              size: langSize,
+              count: 1,
+            })
+          }
         }
-      }
-      return acc
-    }, new Array<Language>())
-    .sort((a, b) => b.size - a.size)
+        return accMap
+      }, new Map<string, Language>())
+      .values(),
+  ).sort((a, b) => b.size - a.size)
 
   const totalLanguageSize = topLangs.reduce((acc, curr) => acc + curr.size, 0)
 
@@ -117,14 +125,14 @@ async function getTopLanguages() {
 }
 
 const languageLogo = {
-  TypeScript: "https://img.icons8.com/color/480/000000/typescript.png",
-  JavaScript: "https://img.icons8.com/color/480/000000/javascript.png",
-  Java: "https://img.icons8.com/color/480/java-coffee-cup-logo--v1.png",
-  "C#": "https://img.icons8.com/color/480/c-sharp-logo.png",
-  Go: "https://img.icons8.com/color/480/golang.png",
-  Rust: "https://www.rust-lang.org/logos/rust-logo-64x64.png",
-  Python: "https://img.icons8.com/color/480/python--v1.png",
-  Kotlin: "https://img.icons8.com/color/480/kotlin.png",
+  TypeScript: "/icons/typescript.png",
+  JavaScript: "/icons/javascript.png",
+  Java: "/icons/java-coffee-cup-logo--v1.png",
+  "C#": "/icons/c-sharp-logo.png",
+  Go: "/icons/golang.png",
+  Rust: "/icons/rust-logo-64x64.png",
+  Python: "/icons/python--v1.png",
+  Kotlin: "/icons/kotlin.png",
 }
 
 const tools: Info[] = [

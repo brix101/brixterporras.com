@@ -12,7 +12,10 @@ export function HeroLogo() {
       onClick={handleScroll}
     >
       <div className="flex flex-col items-center space-y-4">
-        <Icons.mainLogo className="pointer-events-auto h-60 w-60 md:h-80 md:w-80" />
+        <Icons.mainLogo className="pointer-events-auto h-40 w-40 md:h-60 md:w-60" />
+        <h3 className="pointer-events-auto text-xl text-foreground hover:text-primary md:text-3xl">
+          Software Developer
+        </h3>
         <h1 className="pointer-events-auto text-3xl font-bold text-foreground hover:text-primary md:text-5xl">
           BRIXTER PORRAS
         </h1>
