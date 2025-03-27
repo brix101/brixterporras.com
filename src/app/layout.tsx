@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   keywords: ["Brixter Porras", "Porfolio", "Software Developer", "Philippines"],
   authors: [
     {
-      name: "brix101",
+      name: "brixyzz",
       url: siteConfig.links.github,
     },
   ],
-  creator: "brix101",
+  creator: "brixyzz",
   openGraph: {
     type: "website",
     locale: "en_US",

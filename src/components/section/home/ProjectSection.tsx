@@ -102,7 +102,7 @@ query userInfo($login: String!) {
 
 async function getPinnedProjects() {
   const res = await graphQuery<PinnedResponse>(query, {
-    login: "brix101",
+    login: "brixyzz",
   })
 
   return res.data.user.pinnedItems.nodes
