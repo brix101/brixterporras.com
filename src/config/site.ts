@@ -6,7 +6,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/Brixyz101",
     linkedin: "https://www.linkedin.com/in/brixter-porras",
-    github: "https://github.com/brixyz",
+    github: "https://github.com/Brix101",
   },
 }
 

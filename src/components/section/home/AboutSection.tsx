@@ -70,7 +70,7 @@ query userInfo($login: String!) {
 
 async function getTopLanguages() {
   const res = await graphQuery<GraphQLResponse>(query, {
-    login: "brixyzz",
+    login: "brix101",
   })
 
   const repoNodes = res.data.user.repositories.nodes
