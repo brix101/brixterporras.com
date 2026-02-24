@@ -7,12 +7,7 @@
 	let { class: className }: Pick<ButtonProps, 'class'> = $props();
 </script>
 
-<Button
-	onclick={toggleMode}
-	// class={cn('border-primary! bg-background!', className)}
-	variant="outline"
-	size="icon"
->
+<Button onclick={toggleMode} class="cursor-pointer" variant="ghost" size="icon">
 	<SunIcon
 		class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all! dark:scale-0 dark:-rotate-90"
 	/>

@@ -33,7 +33,7 @@
 		{#each siteLinks as link}
 			<a
 				href={link.href}
-				class={buttonVariants({ variant: 'outline', size: 'sm' })}
+				class={buttonVariants({ variant: 'ghost', size: 'sm' })}
 				onclick={link.isSection ? handleScroll : undefined}
 			>
 				{link.name}
