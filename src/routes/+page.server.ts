@@ -28,7 +28,8 @@ export const load: PageServerLoad = async () => {
 			}
 		]),
 		languages: gqlQuery<LanguageResponse>(TOP_LANGUAGE_QUERY, { login: 'brix101' }).then((res) => {
-			const edges = res.data.user.repositories.nodes.flatMap((repo) => repo.languages.edges);
+			const repos = res.data?.user?.repositories?.nodes || [];
+			const edges = repos.flatMap((repo) => repo.languages.edges);
 			const excludedLangSet = new Set(['HTML', 'CSS', 'SCSS', 'Scheme', 'Lua', 'Shell']);
 
 			const { langMap, totalSize } = edges.reduce(
@@ -67,8 +68,8 @@ export const load: PageServerLoad = async () => {
 
 			return topLangs;
 		}),
-		pinnedItems: gqlQuery<PinnedResponse>(PINNED_ITEMS_QUERY, { login: 'brix101' }).then(
-			(res) => res.data.user.pinnedItems.nodes
-		)
+		pinnedItems: gqlQuery<PinnedResponse>(PINNED_ITEMS_QUERY, { login: 'brix101' }).then((res) => {
+			return res.data?.user?.pinnedItems?.nodes || [];
+		})
 	};
 };

@@ -66,7 +66,8 @@ export async function gqlQuery<T>(query: string, variables?: Record<string, unkn
 		method: 'POST',
 		headers: {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
-			'Content-Type': 'application/json'
+			Accept: 'application/vnd.github+json',
+			'User-Agent': 'sveltekit-cloudflare-app'
 		},
 		body: JSON.stringify({
 			query,
@@ -75,7 +76,27 @@ export async function gqlQuery<T>(query: string, variables?: Record<string, unkn
 	});
 
 	if (!response.ok) {
-		return [] as T;
+		const body = await response.text();
+		console.error('GraphQL query failed:', {
+			status: response.status,
+			statusText: response.statusText,
+			query,
+			variables,
+			body
+		});
+
+		return {
+			data: {
+				user: {
+					repositories: {
+						nodes: []
+					},
+					pinnedItems: {
+						nodes: []
+					}
+				}
+			}
+		} as T;
 	}
 
 	const res: T = await response.json();
