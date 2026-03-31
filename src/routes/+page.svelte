@@ -23,6 +23,7 @@
 	let { data }: PageProps = $props();
 </script>
 
+/** eslint-disable svelte/no-navigation-without-resolve */
 <Metadata title="Home" />
 
 <GithubButton link={siteConfig.links.github} />
@@ -72,7 +73,7 @@
 				</CardHeader>
 				<CardContent class="grid gap-4 px-0 sm:grid-cols-2 sm:px-2">
 					{#await data.tools}
-						{#each Array.from({ length: 4 }) as _}
+						{#each Array.from({ length: 4 })}
 							<Card
 								class="grid w-full grid-cols-3 items-center p-4  transition-all hover:scale-105 md:w-auto"
 							>
@@ -84,7 +85,7 @@
 							</Card>
 						{/each}
 					{:then tools}
-						{#each tools as tool}
+						{#each tools as tool (tool.label)}
 							<Card
 								class="grid w-full grid-cols-3 items-center p-4  transition-all hover:scale-105 md:w-auto"
 							>
@@ -111,12 +112,14 @@
 				<CardHeader class="pt-0">
 					<CardTitle>
 						Languages I use based on my
-						<a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">GitHub</a> stats.
+						<a href={siteConfig.links.github} target="_blank" rel="external noopener noreferrer"
+							>GitHub</a
+						> stats.
 					</CardTitle>
 				</CardHeader>
 				<CardContent class="grid gap-4 px-0 sm:grid-cols-2 sm:px-2 md:grid-cols-4">
 					{#await data.languages}
-						{#each Array.from({ length: 4 }) as _}
+						{#each Array.from({ length: 4 })}
 							<Card
 								class="grid w-full grid-cols-3 items-center p-4 transition-all hover:scale-105 md:w-auto"
 							>
@@ -128,7 +131,7 @@
 							</Card>
 						{/each}
 					{:then languages}
-						{#each languages as { node: { name, color }, percent }}
+						{#each languages as { node: { id, name, color }, percent } (id)}
 							<Card
 								class="grid w-full grid-cols-3 items-center p-4 transition-all hover:scale-105 md:w-auto"
 								style={`border-color: ${color}`}
@@ -168,7 +171,7 @@
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 			{#await data.pinnedItems}
-				{#each Array.from({ length: 4 }) as _}
+				{#each Array.from({ length: 4 })}
 					<Card>
 						<CardHeader>
 							<Skeleton class="h-6 w-1/2 animate-pulse rounded-md" />
@@ -188,7 +191,7 @@
 					</Card>
 				{/each}
 			{:then pinnedItems}
-				{#each pinnedItems as { id, name, description, url, homepageUrl, repositoryTopics }}
+				{#each pinnedItems as { id, name, description, url, homepageUrl, repositoryTopics } (id)}
 					<Card class="justify-between">
 						<div class="space-y-4">
 							<CardHeader>
@@ -200,7 +203,7 @@
 								<div>Topics</div>
 
 								<div class="flex flex-wrap gap-1">
-									{#each repositoryTopics.edges as { node: { topic: { name } } }, index}
+									{#each repositoryTopics.edges as { node: { topic: { name } } } (name)}
 										<Badge class="cursor-default uppercase" variant="secondary">
 											{name}
 										</Badge>
@@ -221,6 +224,7 @@
 											})
 										)}
 										target="_blank"
+										rel="external noopener noreferrer"
 									>
 										Live Demo
 									</a>
@@ -235,6 +239,7 @@
 										})
 									)}
 									target="_blank"
+									rel="external noopener noreferrer"
 								>
 									Github
 								</a>
