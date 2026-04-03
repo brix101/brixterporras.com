@@ -4,7 +4,7 @@
 	import BrixLogo from '../brix-logo.svelte';
 </script>
 
-<section id="section-hero" class="hero-section">
+<section id="section-hero" class="hero-section max-h-screen">
 	<div class="z-10 flex w-full justify-center">
 		<a
 			href="#section-about"

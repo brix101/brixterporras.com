@@ -3,6 +3,7 @@
 	import GithubButton from '$lib/components/github-button.svelte';
 	import Metadata from '$lib/components/metadata.svelte';
 	import HeroSection from '$lib/components/section/hero-section.svelte';
+	import SiteFooter from '$lib/components/site-footer.svelte';
 	import SiteHeader from '$lib/components/site-header.svelte';
 	import { Badge } from '$lib/components/ui/badge';
 	import { buttonVariants } from '$lib/components/ui/button';
@@ -23,7 +24,6 @@
 	let { data }: PageProps = $props();
 </script>
 
-/** eslint-disable svelte/no-navigation-without-resolve */
 <Metadata title="Home" />
 
 <GithubButton link={siteConfig.links.github} />
@@ -45,7 +45,6 @@
 				<CardHeader>
 					<CardTitle class="flex gap-2 text-lg font-bold tracking-tighter sm:text-2xl">
 						<span>Hello, I&rsquo;m Brixter Porras</span>
-						<img src={wave} class="h-5 w-5 md:h-8 md:w-8" alt="hi" />
 					</CardTitle>
 				</CardHeader>
 				<CardContent>
@@ -251,3 +250,4 @@
 		</div>
 	</div>
 </section>
+<SiteFooter />

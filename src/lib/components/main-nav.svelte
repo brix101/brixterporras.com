@@ -30,7 +30,7 @@
 		</a>
 	</div>
 	<div class="space-x-2">
-		{#each siteLinks as link}
+		{#each siteLinks as link (link.name)}
 			<a
 				href={link.href}
 				class={buttonVariants({ variant: 'ghost', size: 'sm' })}

@@ -5,7 +5,7 @@
 	let {
 		title,
 		ogImage,
-		description,
+		description = siteConfig.description,
 		keywords = siteConfig.keywords,
 		ogType = 'website'
 	}: {
